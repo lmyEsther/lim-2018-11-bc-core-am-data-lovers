@@ -1,0 +1,29 @@
+.contendor{
+    width: 100px;
+    max-width: 10000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.header{
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.wrapper{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.header .logo{
+    background: transparent;
+    line-height: 200px;
+    float: left;
+}
+
+.carousel-indicators{
+    display: none;
+}
