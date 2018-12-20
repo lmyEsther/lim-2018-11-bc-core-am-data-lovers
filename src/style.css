@@ -74,6 +74,11 @@ nav ul li a:hover {
   width: 50%;
 }
 
+.item img {
+  width: 100%;
+}
+
+
 div table caption {
   caption-side:top;
   font-weight: bold;
