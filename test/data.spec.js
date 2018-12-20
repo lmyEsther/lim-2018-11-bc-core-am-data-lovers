@@ -12,10 +12,17 @@ const input2 = [{Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301,
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2014-01-04'},
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2015-01-04'},
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2016-01-04'}];
+
 const output2 = [{Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2010-01-04'}, 
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2011-01-04'},
-  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2012-01-04'}];
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2012-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2013-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2014-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2015-01-04'}];
 
+const output3 = [{Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2012-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2013-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2014-01-04'}];
 
 describe('injuries', () => {
   it('debería ser un objeto', () => {
@@ -37,12 +44,12 @@ describe('injuries', () => {
       expect(injuries.recentYears(input2)).toEqual(output2);
     });
   });
-  describe('injuries.filtrarRango', () => {
+  describe('injuries.totalInjuredPersonsByYear', () => {
     it('Deberia ser una funcion', () => {
-      expect(typeof injuries.filtrarRango).toBe('function');
+      expect(typeof injuries.totalInjuredPersonsByYear).toBe('function');
     });
     it('Deberia retornar un array de la data en un rango de años', () => {
-      expect(injuries.filtrarRango(input2)).toEqual(output2);
+      expect(injuries.totalInjuredPersonsByYear(input2, 2012, 2014)).toEqual(output3);
     });
   });
 });

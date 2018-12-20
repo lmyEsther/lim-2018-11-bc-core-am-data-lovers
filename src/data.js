@@ -1,5 +1,5 @@
 const recentYears = (arr) => {
-  return arr.filter(ele => parseInt(ele.Year) >= 2010 & parseInt(ele.Year) <= 2015);
+  return arr.filter(ele => parseInt(ele.Year) >= 2010 && parseInt(ele.Year) <= 2015);
 };
 
 const obtenerAñosUnicos = (arr) => {
@@ -8,11 +8,19 @@ const obtenerAñosUnicos = (arr) => {
     return acum;
   }, []);
 };
-const filtrarRango = () => {};
+
+const totalInjuredPersonsByYear = (arr, yearStar, yearFinish) => {
+  return arr.filter((obj) => {
+    if (parseInt(obj.Year) >= yearStar && parseInt(obj.Year) <= yearFinish) {
+      return obj;
+    }
+  });
+};
+
 
 window.injuries = {
   recentYears,
   obtenerAñosUnicos,
-  filtrarRango
+  totalInjuredPersonsByYear
 };
 
