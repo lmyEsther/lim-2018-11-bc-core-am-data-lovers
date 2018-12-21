@@ -12,8 +12,8 @@
   </head>
   <body>
 
-      <div class="col-xs-12 col-sm-6 col-md-8"></div>
-      <header class="contenedor">
+<!--<div class="col-xs-12 col-sm-6 col-md-8"></div>-->      
+      <header>
         <div class="wrapper">
          <!--<img src="../assets/images/header4.jpg" alt="" width="858px;" height="200px;"> -->
          <img src="../assets/images/logo.png" alt="">
@@ -23,11 +23,10 @@
     <div class="navegacion">
       <nav>
        <ul>
-         <li><a href="#">Inicio</a></li>
-         <li><a href="#">Datos</a></li>
-         <li><a href="#">Estadísticas</a></li>
-         <li><a href="#">Ayuda</a></li>
-         <li><a href="#">Contacto</a></li>
+         <li><button>INICIO</button></li>
+         <li><button id="btn-DataSet">DATOS</button></li>
+         <li><button id="btn-stats">ESTADISTICAS</button></li>
+         <li><button id="btn-contact">CONTACTO</button></li>
        </ul>
      </nav>
     </div>
@@ -67,39 +66,43 @@
 
           <div class="col-sm-6">
               <table class="table table-sm">
-                  <caption>Información</caption>
+                  <caption>Acerca de</caption>
                 <tbody>
                   <tr>
-                   <td>Area de Interés</td>
+                    <th>DataSet</th>
+                    <td>Cantidad de Personas Heridas por Medio de Transporte</td>
+                  </tr>
+                  <tr>
+                   <th>Area de Interés</th>
                    <td>Seguridad Vial</td>
                  </tr>
                   <tr>
-                   <td>Interesados</td>
+                   <th>Interesados</th>
                    <td>Profesionales, Instituciones de Salud, Entes de Seguridad, etc</td>
                   </tr>
                   <tr>
-                    <td>Pais</td>
+                    <th>Pais</th>
                     <td>EE.UU</td>
                   </tr>
                   <tr>
-                    <td>Datos Obtenidos desde</td>
+                    <th>Datos Obtenidos desde</th>
                     <td>Año 1960</td>
                   </tr>
                   <tr>
-                    <td>Datos Obtenidos hasta</td>
-                    <td>Año 2016</td>
+                    <th>Datos Obtenidos hasta</th>
+                    <td>Año 2015</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          <div class="col-xs-12">
-              <table class="table table-sm">
-                <caption>Cantidad de Personas Heridas por Medio de Transporte entre los Años 2010 y 2015</caption>
-                <tbody id="previa"></tbody>
-              </table>
-          </div>
+            <div class="py-5">
+              <div class="container">
+                <div class="row nowrap" id="previa">
+                </div>
+              </div>
+            </div>
 
             <div>
               <select id="añoInicio"></select>
@@ -107,12 +110,19 @@
               <button id="btn-select-range">Filtrar</button>
             </div>
             
-            <div class="col-xs-12">
-              <table class="table table-sm">
-                <tbody id="dataFilter"></tbody>
-              </table>
-          </div>
+            <div class="py-5">
+                <div class="container">
+                  <div class="row nowrap" id="dataFilter">
+                  </div>
+                </div>
+              </div>
 
+          <div class="py-5">
+              <div class="container">
+                <div class="row nowrap" id="card">
+                </div>
+              </div>
+            </div>
     </div> <!--contenedor-->
 
 

@@ -6,11 +6,15 @@
     min-width: 100px;
     max-width: 1200px;
     margin: 0 auto;
-    overflow: hidden;
+    height: auto;
 }
 
+.container {
+  height: 65vh;
+}
 header {
     width: 100%;
+    overflow: hidden;
 }
 
 .wrapper {
@@ -45,18 +49,22 @@ nav ul::after {
   clear: both;
 }
 
-nav ul li a {
+nav ul li button {
   display: inline-block;
-  width: 200px;
+  width: 300px;
   color: #ffffff;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  padding: 10px;
+  padding: 1em;
   font-size: 14px;
+  background-color: #244B72;
+  border: none;
+  letter-spacing: 0.1em;
+
 }
 
-nav ul li a:hover {
+nav ul li button:hover {
   background-color: #5DADE2;
   color: #000000;
   text-decoration: none;
@@ -66,12 +74,14 @@ nav ul li a:hover {
 #myCarousel {
   float: right;
   width: 50%;
-  margin: 30px auto;
+  padding: 1em;
 }
 
-.col-md-8 {
+.col-sm-6 {
   float: left;
   width: 50%;
+  padding: 1em;
+  margin: 20px auto;
 }
 
 .item img {
