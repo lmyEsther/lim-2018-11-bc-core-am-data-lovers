@@ -109,3 +109,11 @@ div table caption {
 #previa tr:nth-child(even) {
   background-color: #ffffff;
 }
+
+.ocultar {
+   display: none;
+ }
+
+.mostrar {
+  display: block;
+}

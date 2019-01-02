@@ -1,3 +1,26 @@
+const button_data= document.getElementById('data');
+const button_stats = document.getElementById('stats');
+const screenStar = document.getElementById('screenStar');
+const allData = document.getElementById('allData');
+
+
+
+const click_button_data = () => {
+  allData.classList.add("mostrar");
+  allData.classList.remove("ocultar");
+  screenStar.classList.add("ocultar");
+  screenStar.classList.remove("mostrar");
+}
+
+/*const click_button_start = () => {
+  allData.classList.add("ocultar");
+  allData.classList.remove("mostrar");
+  screenStart.classList.add("mostrar");
+  screenStart.classList.remove("ocultar");
+}*/
+
+
+
 const data = window.INJURIES;
 let sectionCard = document.getElementById('card');
 let tableDataPrevia = document.getElementById('previa');
@@ -8,7 +31,6 @@ let btnFilterByRange = document.getElementById('btn-select-range');
 let arrAños = injuries.obtenerAñosUnicos(data);
 let dataTableFilter = document.getElementById('dataFilter');
 
-
 const cardCreater = (arr, section) => {
   let cardData = '';
 
@@ -16,7 +38,7 @@ const cardCreater = (arr, section) => {
     cardData += '<div class="col-md-3">' + 
     '<div class="card">' + '<div class="card-block">' +
     `<h3 class="card-title">${parseInt(cant.Year)}</h3>` +
-    '<ul class="list-unstyled">' + 
+      '<ul class="list-unstyled">' + 
       `<li>Urbano: ${parseInt(cant.Total_Injured_Persons_Highway) + 
         cant.Total_Injured_Persons_Bus_Occupants +
         cant.Total_Injured_Persons_Commuter_Carrier + 
@@ -44,8 +66,10 @@ const cardCreater = (arr, section) => {
         parseInt(cant.Total_Injured_Persons_Other_Incident) +
         parseInt(cant.Total_Injured_Persons_Other_Incidents) +
         parseInt(cant.Total_Injured_Persons_Pipeline)}</li>` +
-    '</ul>' + '</div>' + '</div>' + '</div>';
+    '</ul>' 
+    + '</div>' + '</div>' + '</div>';
   }));
+
   section.innerHTML = cardData;
 };
 
@@ -62,3 +86,6 @@ btnFilterByRange.addEventListener('click', () => {
 });
 
 cardCreater(data, sectionCard);
+
+button_data.addEventListener('click', click_button_data);
+//button_star.addEventListener('click', click_button_star);

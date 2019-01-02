@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
-
+   
 <!--<div class="col-xs-12 col-sm-6 col-md-8"></div>-->      
       <header>
         <div class="wrapper">
@@ -23,14 +23,14 @@
     <div class="navegacion">
       <nav>
        <ul>
-         <li><button>INICIO</button></li>
-         <li><button id="btn-DataSet">DATOS</button></li>
-         <li><button id="btn-stats">ESTADISTICAS</button></li>
-         <li><button id="btn-contact">CONTACTO</button></li>
+         <li><button id="start" type="button">INICIO</button></li>
+         <li><button id="data" type="button">DATOS</button></li>
+         <li><button id="stats" type="button">ESTADISTICAS</button></li>
+         <li><button id="contact" type="button">CONTACTO</button></li>
        </ul>
      </nav>
     </div>
-
+    <section id="screenStar" class="mostrar">
     <div class="contenedor">
       <div class="container">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -102,30 +102,32 @@
                 <div class="row nowrap" id="previa">
                 </div>
               </div>
-            </div>
-
-            <div>
+            </div>--->
+    </section>
+    <section id="allData" class="ocultar">
+            <div class="filter">
               <select id="añoInicio"></select>
               <select id="añoFin"></select>
               <button id="btn-select-range">Filtrar</button>
             </div>
-            
-            <div class="py-5">
+   
+           <!--  <div class="py-5">
                 <div class="container">
                   <div class="row nowrap" id="dataFilter">
                   </div>
                 </div>
               </div>
-
+  -->
           <div class="py-5">
               <div class="container">
                 <div class="row nowrap" id="card">
                 </div>
               </div>
             </div>
-    </div> <!--contenedor-->
+    </section> 
+  </div> <!--contenedor-->
 
-
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./data/injuries/injuries.js"></script>
     <script src="data.js"></script>
     <script src="main.js"></script>
