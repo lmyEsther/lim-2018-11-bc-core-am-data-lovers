@@ -24,6 +24,15 @@ const output3 = [{Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2013-01-04'},
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2014-01-04'}];
 
+const output4 = [{Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2016-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2015-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2014-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2013-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2012-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2011-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2010-01-04'},
+  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, Year: '2009-01-04'}];
+
 describe('injuries', () => {
   it('debería ser un objeto', () => {
     expect(typeof injuries).toBe('object');
@@ -52,15 +61,12 @@ describe('injuries', () => {
       expect(injuries.totalInjuredPersonsByYear(input2, 2012, 2014)).toEqual(output3);
     });
   });
+  describe('injuries.sortData', () => {
+    it('Deberia ser una funcion', () => {
+      expect(typeof injuries.sortData).toBe('function');
+    });
+    it('Deberiar retornar un array con años ordenados de mayor a menor', () => {
+      expect(injuries.sortData(input2, 'mostRecent')).toEqual(output4); 
+    });
+  });
 });
-
-/*
-describe('example', () => {
-  it('is a function', () => {
-    expect(typeof example).toBe('function');
-  });
-
-  it('returns `example`', () => {
-    expect(example()).toBe('example');
-  });
-});*/

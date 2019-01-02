@@ -6,8 +6,8 @@ let selectYearStar = document.getElementById('añoInicio');
 let selectYearFinish = document.getElementById('añoFin');
 let btnFilterByRange = document.getElementById('btn-select-range');
 let arrAños = injuries.obtenerAñosUnicos(data);
-let dataTableFilter = document.getElementById('dataFilter');
-
+// let dataTableFilter = document.getElementById('dataFilter');
+const selectOrderInjuries = document.getElementById('order-injuries');
 
 const cardCreater = (arr, section) => {
   let cardData = '';
@@ -51,6 +51,8 @@ const cardCreater = (arr, section) => {
 
 cardCreater(dataRecent, tableDataPrevia);
 
+cardCreater(data, sectionCard);
+
 arrAños.forEach((año) => {
   selectYearStar.innerHTML += `<option value = ${año}>${año}</option>`;
   selectYearFinish.innerHTML += `<option value = ${año}>${año}</option>`;
@@ -58,7 +60,10 @@ arrAños.forEach((año) => {
 
 btnFilterByRange.addEventListener('click', () => {
   let arrFilterByYear = injuries.totalInjuredPersonsByYear(data, selectYearStar.value, selectYearFinish.value);
-  cardCreater(arrFilterByYear, dataTableFilter);
+  cardCreater(arrFilterByYear, sectionCard);
 });
 
-cardCreater(data, sectionCard);
+selectOrderInjuries.addEventListener('change', () => {
+  const arrOrderData = injuries.sortData(data, selectOrderInjuries.value);
+  cardCreater(arrOrderData, sectionCard);
+});

@@ -105,17 +105,26 @@
             </div>
 
             <div>
+              <h3>Filtrar por Rango de</h3>
               <select id="añoInicio"></select>
               <select id="añoFin"></select>
               <button id="btn-select-range">Filtrar</button>
             </div>
-            
-            <div class="py-5">
+            <div>
+              <h3>Ordenar por</h3>
+              <select class="type-select" id="order-injuries">
+                <option value="lessRecent">Año: Menos Recientes</option>
+                <option value="mostRecent">Año: Más Recientes</option>
+                <option value="lessInjured">Menos Personas Heridas</option>
+                <option value="mostInjured">Más Personas Heridas</option>
+              </select>
+            </div>
+            <!--<div class="py-5">
                 <div class="container">
                   <div class="row nowrap" id="dataFilter">
                   </div>
                 </div>
-              </div>
+              </div>-->
 
           <div class="py-5">
               <div class="container">
