@@ -18,11 +18,12 @@ const totalInjuredPersonsByYear = (arr, yearStar, yearFinish) => {
 };
 
 const sortData = (arr, sortBy) => {
-  const orderByYear = arr.sort((aaaa, bbbb) => {
-    (parseInt(aaaa.Year) > parseInt(bbbb.Year) ? 1 : -1);
+  const copyData = [ ...arr];
+  const orderByYear = copyData.sort((aaa, bbb) => {
+    (parseInt(aaa['Year']) > parseInt(bbb['Year']) ? 1 : -1);
   });
-  const orderByTotalInjured = arr.sort((aa, bb) => {
-    (aa.Total_Injured_Persons > bb.Total_Injured_Persons ? 1 : -1);
+  const orderByTotalInjured = copyData.sort((aaa, bbb) => { 
+    (parseInt(aaa['Total_Injured_Persons']) > parseInt(bbb['Total_Injured_Persons']) ? 1 : -1);
   });
 
   if (sortBy === 'lessRecent') {
@@ -33,7 +34,7 @@ const sortData = (arr, sortBy) => {
   } 
   if (sortBy === 'lessInjured') {
     return orderByTotalInjured;
-  } 
+  }
   if (sortBy === 'mostInjured') {
     return orderByTotalInjured.reverse();
   }
@@ -45,4 +46,5 @@ window.injuries = {
   totalInjuredPersonsByYear,
   sortData
 };
+
 

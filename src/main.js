@@ -1,24 +1,23 @@
-const button_data= document.getElementById('data');
-const button_stats = document.getElementById('stats');
+const buttonData = document.getElementById('data');
+const buttonStart = document.getElementById('start');
+// const buttonStats = document.getElementById('stats');
 const screenStar = document.getElementById('screenStar');
 const allData = document.getElementById('allData');
 
 
+const clickButtonData = () => {
+  allData.classList.add('mostrar');
+  allData.classList.remove('ocultar');
+  screenStar.classList.add('ocultar');
+  screenStar.classList.remove('mostrar');
+};
 
-const click_button_data = () => {
-  allData.classList.add("mostrar");
-  allData.classList.remove("ocultar");
-  screenStar.classList.add("ocultar");
-  screenStar.classList.remove("mostrar");
-}
-
-/*const click_button_start = () => {
-  allData.classList.add("ocultar");
-  allData.classList.remove("mostrar");
-  screenStart.classList.add("mostrar");
-  screenStart.classList.remove("ocultar");
-}*/
-
+const clickButtonStart = () => {
+  allData.classList.add('ocultar');
+  allData.classList.remove('mostrar');
+  screenStar.classList.add('mostrar');
+  screenStar.classList.remove('ocultar');
+};
 
 
 const data = window.INJURIES;
@@ -83,9 +82,21 @@ arrAños.forEach((año) => {
   selectYearFinish.innerHTML += `<option value = ${año}>${año}</option>`;
 });
 
-btnFilterByRange.addEventListener('click', () => {
-  let arrFilterByYear = injuries.totalInjuredPersonsByYear(data, selectYearStar.value, selectYearFinish.value);
-  cardCreater(arrFilterByYear, sectionCard);
+btnFilterByRange.addEventListener('click', (event) => { 
+  event.preventDefault();
+  
+  const yearStar = selectYearStar.value;
+  const yearFinish = selectYearFinish.value;
+  const message = document.getElementById('messageError');
+
+  if (yearStar > yearFinish) {
+    message.innerHTML = 'Por favor, ingresa un rango válido';
+    sectionCard.innerHTML = '';
+  } else {
+    message.innerHTML = '';
+    let arrFilterByYear = injuries.totalInjuredPersonsByYear(data, yearStar, yearFinish);
+    cardCreater(arrFilterByYear, sectionCard);
+  }
 });
 
 selectOrderInjuries.addEventListener('change', () => {
@@ -93,5 +104,5 @@ selectOrderInjuries.addEventListener('change', () => {
   cardCreater(arrOrderData, sectionCard);
 });
 
-button_data.addEventListener('click', click_button_data);
-//button_star.addEventListener('click', click_button_star);
+buttonData.addEventListener('click', clickButtonData);
+buttonStart.addEventListener('click', clickButtonStart);

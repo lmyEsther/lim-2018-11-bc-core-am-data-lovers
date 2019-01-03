@@ -26,7 +26,7 @@
          <li><button id="start" type="button">INICIO</button></li>
          <li><button id="data" type="button">DATOS</button></li>
          <li><button id="stats" type="button">ESTADISTICAS</button></li>
-         <li><button id="contact" type="button">CONTACTO</button></li>
+         <li><button id="info" type="button">INFORMACION</button></li>
        </ul>
      </nav>
     </div>
@@ -108,18 +108,19 @@
     </section>
     <section id="allData" class="ocultar">
             <div class="filter">
-                <h3>Filtrar por Rango de</h3>
+                <h3>Filtrar por Rango de Año</h3>
               <select id="añoInicio"></select>
               <select id="añoFin"></select>
               <button id="btn-select-range">Filtrar</button>
+              <p id="messageError"></p>
             </div>
             <div>
               <h3>Ordenar por</h3>
               <select class="type-select" id="order-injuries">
                 <option value="lessRecent">Año: Menos Recientes</option>
                 <option value="mostRecent">Año: Más Recientes</option>
-                <option value="lessInjured">Menos Personas Heridas</option>
-                <option value="mostInjured">Más Personas Heridas</option>
+                <option value="lessInjured">Total Menos Personas Heridas</option>
+                <option value="mostInjured">Total Más Personas Heridas</option>
               </select>
             </div>
             <!--<div class="py-5">
