@@ -19,11 +19,20 @@ const totalInjuredPersonsByYear = (arr, yearStar, yearFinish) => {
 
 const sortData = (arr, sortBy) => {
   const copyData = [ ...arr];
+  const copyData2 = [ ...arr].map(element => {
+    if (element['Total_Injured_Persons'] === null) {
+      element['Total_Injured_Persons'] = 0;
+      return element;
+    } else {
+      return element;
+    }
+  });
+
   const orderByYear = copyData.sort((aaa, bbb) => {
     (parseInt(aaa['Year']) > parseInt(bbb['Year']) ? 1 : -1);
   });
-  const orderByTotalInjured = copyData.sort((aaa, bbb) => { 
-    (parseInt(aaa['Total_Injured_Persons']) > parseInt(bbb['Total_Injured_Persons']) ? 1 : -1);
+  const orderByTotalInjured = copyData2.sort((aaa, bbb) => { 
+    (aaa['Total_Injured_Persons'] - bbb['Total_Injured_Persons']);
   });
 
   if (sortBy === 'lessRecent') {
