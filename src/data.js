@@ -1,17 +1,17 @@
 const recentYears = (arr) => {
-  return arr.filter(ele => parseInt(ele.Year) >= 2010 && parseInt(ele.Year) <= 2015);
+  return arr.filter(ele => ele.year >= 2010 && ele.year <= 2015);
 };
 
 const obtenerAñosUnicos = (arr) => {
   return arr.reduce((acum, ele) => {
-    acum.push(parseInt(ele.Year));
+    acum.push(ele.year);
     return acum;
   }, []);
 };
 
 const totalInjuredPersonsByYear = (arr, yearStar, yearFinish) => {
   return arr.filter((obj) => {
-    if (parseInt(obj.Year) >= yearStar && parseInt(obj.Year) <= yearFinish) {
+    if (obj.year >= yearStar && obj.year <= yearFinish) {
       return obj;
     }
   });
@@ -20,8 +20,8 @@ const totalInjuredPersonsByYear = (arr, yearStar, yearFinish) => {
 const sortData = (arr, sortBy) => {
   const copyData = [ ...arr];
   const copyData2 = [ ...arr].map(element => {
-    if (element['Total_Injured_Persons'] === null) {
-      element['Total_Injured_Persons'] = 0;
+    if (element['urbano'] === null) {
+      element['urbano'] = 0;
       return element;
     } else {
       return element;
@@ -29,10 +29,10 @@ const sortData = (arr, sortBy) => {
   });
 
   const orderByYear = copyData.sort((aaa, bbb) => {
-    (parseInt(aaa['Year']) > parseInt(bbb['Year']) ? 1 : -1);
+    (aaa['year'] > bbb['year'] ? 1 : -1);
   });
   const orderByTotalInjured = copyData2.sort((aaa, bbb) => { 
-    (aaa['Total_Injured_Persons'] - bbb['Total_Injured_Persons']);
+    (aaa['urbano'] - bbb['urbano']);
   });
 
   if (sortBy === 'lessRecent') {
@@ -49,7 +49,7 @@ const sortData = (arr, sortBy) => {
   }
 };
 
-const classifiedTransp = (arr) => {
+const classifiedTransp = (arr) => { // falta test unitario de esto...
   const copyData3 = [ ...arr];
   const newArr = [];
 
