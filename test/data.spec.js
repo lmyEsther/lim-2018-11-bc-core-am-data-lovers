@@ -70,3 +70,9 @@ describe('injuries', () => {
     });
   });
 });
+
+describe('stats', () => {
+  it('Debería ser un objeto', () => {
+    expect(typeof stats).toBe('object');
+  });
+});

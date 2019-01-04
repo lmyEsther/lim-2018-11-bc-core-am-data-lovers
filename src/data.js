@@ -56,4 +56,6 @@ window.injuries = {
   sortData
 };
 
+window.stats = {};
+
 
