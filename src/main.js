@@ -31,10 +31,10 @@ let btnFilterByRange = document.getElementById('btn-select-range');
 let arrAños = injuries.obtenerAñosUnicos(newData);
 // let dataTableFilter = document.getElementById('dataFilter');
 const selectOrderInjuries = document.getElementById('order-injuries');
-const YEAR_KEY = "year"
+const YEAR_KEY = 'year';
 
 // ////////// generador de tarjetas en el HTML
-const cardCreater = (arr, section) => {
+/* const cardCreater = (arr, section) => {
   let cardData = '';
 
   arr.forEach((cant => {
@@ -52,17 +52,18 @@ const cardCreater = (arr, section) => {
       `<li>Otros: ${cant['otros']}</li>` +
     '</ul>' 
     + '</div>' + '</div>' + '</div>';
-  }));
-window.google.charts.load('current', {'packages':['corechart']});
+  })); */
 
-  const cardCreater = (arr, section) => {
-    let cardData = '';
+window.google.charts.load('current', {'packages': ['corechart']});
+
+const cardCreater = (arr, section) => {
+  let cardData = '';
   
-    arr.forEach((cant => {
-      cardData += '<div class="card">' + '<div class="card-block">' +
+  arr.forEach((cant => {
+    cardData += '<div class="card">' + '<div class="card-block">' +
       `<h3 class="card-title">${parseInt(cant.Year)}</h3>` +
-      `<div class="pie-chart"></div>` + '</div>' + '</div>' + '</div>';
-    }));
+      '<div class="pie-chart"></div>' + '</div>' + '</div>' + '</div>';
+  }));
 
   section.innerHTML = cardData;
 
@@ -70,9 +71,8 @@ window.google.charts.load('current', {'packages':['corechart']});
     if (index >= classifiedTransp.length) return;
     let scores = Object.entries(classifiedTransp[index]); // creates an array like [key, value]
     scores = scores.filter((score) => {
-      return score[0] !== YEAR_KEY
+      return score[0] !== YEAR_KEY;
     });
-
     
 
     let data = window.google.visualization.arrayToDataTable([
@@ -86,15 +86,14 @@ window.google.charts.load('current', {'packages':['corechart']});
 
     let chart = new window.google.visualization.PieChart(element);
     chart.draw(data, options);
-  }
+  };
   
-  const sectionPieCharts = $(section).find(".pie-chart");
+  const sectionPieCharts = $(section).find('.pie-chart');
   // dibujar los pie chart cuando se haya cargado la libreria
-  window.google.charts.setOnLoadCallback( () => {
-      sectionPieCharts.each(drawChart)
-    }
+  window.google.charts.setOnLoadCallback(() => {
+    sectionPieCharts.each(drawChart);
+  }
   );
-
 };  
 
 cardCreater(dataRecent, tableDataPrevia);
