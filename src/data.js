@@ -1,55 +1,53 @@
 const recentYears = (arr) => {
-  return arr.filter(ele => parseInt(ele.Year) >= 2010 && parseInt(ele.Year) <= 2015);
+  return arr.filter(ele => parseInt(ele.year) >= 2010 && parseInt(ele.year) <= 2015);
 };
 
 const obtenerAñosUnicos = (arr) => {
   return arr.reduce((acum, ele) => {
-    acum.push(parseInt(ele.Year));
+    acum.push(parseInt(ele.year));
     return acum;
   }, []);
 };
 
 const totalInjuredPersonsByYear = (arr, yearStar, yearFinish) => {
   return arr.filter((obj) => {
-    if (parseInt(obj.Year) >= yearStar && parseInt(obj.Year) <= yearFinish) {
+    if (parseInt(obj.year) >= yearStar && parseInt(obj.year) <= yearFinish) {
       return obj;
     }
   });
 };
 
-const sortData = (arr, sortBy) => {
+const sortDataYear = (arr, sortBy) => {
   const copyData = [ ...arr];
-  const copyData2 = [ ...arr].map(element => {
-    if (element['Total_Injured_Persons'] === null) {
-      element['Total_Injured_Persons'] = 0;
-      return element;
-    } else {
-      return element;
-    }
-  });
 
   const orderByYear = copyData.sort((aaa, bbb) => {
-    (parseInt(aaa['Year']) > parseInt(bbb['Year']) ? 1 : -1);
+    (aaa['year'] > bbb['year'] ? 1 : -1);
   });
-  const orderByTotalInjured = copyData2.sort((aaa, bbb) => { 
-    (aaa['Total_Injured_Persons'] - bbb['Total_Injured_Persons']);
-  });
+  
 
   if (sortBy === 'lessRecent') {
     return orderByYear;
-  } 
-  if (sortBy === 'mostRecent') {
+  } else if (sortBy === 'mostRecent') {
     return orderByYear.reverse();
   } 
+};
+
+const sortDataUrbano = (arr, sortBy) => {
+  const copyData2 = [ ...arr];
+
+  const orderByUrbano = copyData2.sort((aaa, bbb) => { 
+    (aaa['urbano'] > bbb['urbano'] ? 1 : -1);
+  });
+
   if (sortBy === 'lessInjured') {
-    return orderByTotalInjured;
-  }
-  if (sortBy === 'mostInjured') {
-    return orderByTotalInjured.reverse();
+    return orderByUrbano;
+  } else if (sortBy === 'mostInjured') {
+    return orderByUrbano.reverse();
   }
 };
 
-const classifiedTransp = (arr) => {
+
+const classifiedTransp = (arr) => { // falta test unitario de esto...
   const copyData3 = [ ...arr];
   const newArr = [];
 
@@ -57,12 +55,12 @@ const classifiedTransp = (arr) => {
     let obj = {};
 
     obj.urbano = (cant['Total_Injured_Persons_Highway'] + 
-    cant['Total_Injured_Persons_Bus_Occupants'] +
-    cant['Total_Injured_Persons_Commuter_Carrier'] + 
-    cant['Total_Injured_Persons_Motorcyclists'] +
-    cant['Total_Injured_Persons_Passenger_Car_Occupants'] +
-    cant['Total_Injured_Persons_Pedalcyclists'] +
-    cant['Total_Injured_Persons_Pedestrians']);
+        cant['Total_Injured_Persons_Bus_Occupants'] +
+        cant['Total_Injured_Persons_Commuter_Carrier'] + 
+        cant['Total_Injured_Persons_Motorcyclists'] +
+        cant['Total_Injured_Persons_Passenger_Car_Occupants'] +
+        cant['Total_Injured_Persons_Pedalcyclists'] +
+        cant['Total_Injured_Persons_Pedestrians']);
 
     obj.camion = (cant['Total_Injured_Persons_Truck_Occupants_Light'] +
         cant['Total_Injured_Persons_Truck_Occupants_Large']);
@@ -73,9 +71,9 @@ const classifiedTransp = (arr) => {
         cant['Total_Injured_Persons_US_Air_Carrier']);
 
     obj.ferreo = (cant['Total_Injured_Persons_Railroad_Alone'] + 
-      cant['Total_Injured_Persons_Railroad_Train_Accidents'] +
-      cant['Total_Injured_Persons_Train_Accidents_Rail_Roads'] + 
-      cant['Total_Injured_Persons_Transit_Rail']);
+        cant['Total_Injured_Persons_Railroad_Train_Accidents'] +
+        cant['Total_Injured_Persons_Train_Accidents_Rail_Roads'] + 
+        cant['Total_Injured_Persons_Transit_Rail']);
     
     obj.maritimo = (cant['Total_Injured_Persons_Water'] +
         cant['Total_Injured_Persons_Water_Not_Related_To_Vessel_Casualties'] +
@@ -105,7 +103,8 @@ window.injuries = {
   recentYears,
   obtenerAñosUnicos,
   totalInjuredPersonsByYear,
-  sortData,
+  sortDataYear,
+  sortDataUrbano,
   classifiedTransp
 };
 

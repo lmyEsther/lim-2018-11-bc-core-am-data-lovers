@@ -24,25 +24,46 @@ const data = window.INJURIES;
 const newData = injuries.classifiedTransp(data);
 let sectionCard = document.getElementById('card');
 let tableDataPrevia = document.getElementById('previa');
-let dataRecent = injuries.recentYears(data).reverse();
+let dataRecent = injuries.recentYears(newData).reverse();
 let selectYearStar = document.getElementById('añoInicio');
 let selectYearFinish = document.getElementById('añoFin');
 let btnFilterByRange = document.getElementById('btn-select-range');
-let arrAños = injuries.obtenerAñosUnicos(data);
+let arrAños = injuries.obtenerAñosUnicos(newData);
 // let dataTableFilter = document.getElementById('dataFilter');
 const selectOrderInjuries = document.getElementById('order-injuries');
-const YEAR_KEY = "year"
+const YEAR_KEY = 'year';
 
-window.google.charts.load('current', {'packages':['corechart']});
+// ////////// generador de tarjetas en el HTML
+/* const cardCreater = (arr, section) => {
+  let cardData = '';
 
-  const cardCreater = (arr, section) => {
-    let cardData = '';
+  arr.forEach((cant => {
+    cardData += '<div class="col-md-3">' + 
+    '<div class="card">' + '<div class="card-block">' +
+    `<h3 class="card-title">${cant['year']}</h3>` +
+      '<ul class="list-unstyled">' + 
+      `<li>Urbano: ${cant['urbano']}</li>` +
+      `<li>Camión: ${cant['camion']}</li>` +
+      `<li>Aéreo: ${cant['aereo']}</li>` + 
+      `<li>Férreo: ${cant['ferreo']}</li>` +
+      `<li>Maritimo y Fluvial: ${cant['maritimo']}</li>` +
+      `<li>Buques: ${cant['buques']}</li>` +
+      `<li>Yates: ${cant['yates'] + 0}</li>` +
+      `<li>Otros: ${cant['otros']}</li>` +
+    '</ul>' 
+    + '</div>' + '</div>' + '</div>';
+  })); */
+
+window.google.charts.load('current', {'packages': ['corechart']});
+
+const cardCreater = (arr, section) => {
+  let cardData = '';
   
-    arr.forEach((cant => {
-      cardData += '<div class="card">' + '<div class="card-block">' +
+  arr.forEach((cant => {
+    cardData += '<div class="card">' + '<div class="card-block">' +
       `<h3 class="card-title">${parseInt(cant.Year)}</h3>` +
-      `<div class="pie-chart"></div>` + '</div>' + '</div>' + '</div>';
-    }));
+      '<div class="pie-chart"></div>' + '</div>' + '</div>' + '</div>';
+  }));
 
   section.innerHTML = cardData;
 
@@ -50,9 +71,8 @@ window.google.charts.load('current', {'packages':['corechart']});
     if (index >= classifiedTransp.length) return;
     let scores = Object.entries(classifiedTransp[index]); // creates an array like [key, value]
     scores = scores.filter((score) => {
-      return score[0] !== YEAR_KEY
+      return score[0] !== YEAR_KEY;
     });
-
     
 
     let data = window.google.visualization.arrayToDataTable([
@@ -66,20 +86,19 @@ window.google.charts.load('current', {'packages':['corechart']});
 
     let chart = new window.google.visualization.PieChart(element);
     chart.draw(data, options);
-  }
+  };
   
-  const sectionPieCharts = $(section).find(".pie-chart");
+  const sectionPieCharts = $(section).find('.pie-chart');
   // dibujar los pie chart cuando se haya cargado la libreria
-  window.google.charts.setOnLoadCallback( () => {
-      sectionPieCharts.each(drawChart)
-    }
+  window.google.charts.setOnLoadCallback(() => {
+    sectionPieCharts.each(drawChart);
+  }
   );
-
 };  
 
 cardCreater(dataRecent, tableDataPrevia);
 
-cardCreater(data, sectionCard);
+cardCreater(newData, sectionCard);
 
 arrAños.forEach((año) => {
   selectYearStar.innerHTML += `<option value = ${año}>${año}</option>`;
@@ -98,13 +117,13 @@ btnFilterByRange.addEventListener('click', (event) => {
     sectionCard.innerHTML = '';
   } else {
     message.innerHTML = '';
-    let arrFilterByYear = injuries.totalInjuredPersonsByYear(data, yearStar, yearFinish);
+    let arrFilterByYear = injuries.totalInjuredPersonsByYear(newData, yearStar, yearFinish);
     cardCreater(arrFilterByYear, sectionCard);
   }
 });
 
 selectOrderInjuries.addEventListener('change', () => {
-  const arrOrderData = injuries.sortData(data, selectOrderInjuries.value);
+  const arrOrderData = injuries.sortData(newData, selectOrderInjuries.value);
   cardCreater(arrOrderData, sectionCard);
 });
 
