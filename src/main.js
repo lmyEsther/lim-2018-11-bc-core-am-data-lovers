@@ -21,6 +21,7 @@ const clickButtonStart = () => {
 
 
 const data = window.INJURIES;
+const newData = injuries.classifiedTransp(data);
 let sectionCard = document.getElementById('card');
 let tableDataPrevia = document.getElementById('previa');
 let dataRecent = injuries.recentYears(data).reverse();
@@ -30,51 +31,51 @@ let btnFilterByRange = document.getElementById('btn-select-range');
 let arrAños = injuries.obtenerAñosUnicos(data);
 // let dataTableFilter = document.getElementById('dataFilter');
 const selectOrderInjuries = document.getElementById('order-injuries');
+const YEAR_KEY = "year"
 
-const cardCreater = (arr, section) => {
-  let cardData = '';
+window.google.charts.load('current', {'packages':['corechart']});
 
-  arr.forEach((cant => {
-    cardData += '<div class="col-md-3">' + 
-    '<div class="card">' + '<div class="card-block">' +
-    `<h3 class="card-title">${parseInt(cant['Year'])}</h3>` +
-      '<ul class="list-unstyled">' + 
-      `<li>Urbano: ${cant['Total_Injured_Persons_Highway'] + 
-        cant['Total_Injured_Persons_Bus_Occupants'] +
-        cant['Total_Injured_Persons_Commuter_Carrier'] + 
-        cant['Total_Injured_Persons_Motorcyclists'] +
-        cant['Total_Injured_Persons_Passenger_Car_Occupants'] +
-        cant['Total_Injured_Persons_Pedalcyclists'] +
-        cant['Total_Injured_Persons_Pedestrians']}</li>` +
-      `<li>Camión: ${cant['Total_Injured_Persons_Truck_Occupants_Light'] +
-        cant['Total_Injured_Persons_Truck_Occupants_Large']}</li>` +
-      `<li>Aéreo: ${cant['Total_Injured_Persons_Air'] +
-        cant['Total_Injured_Persons_General_Aviation'] +
-        cant['Total_Injured_Persons_On_Demand_Air_Taxi'] +
-        cant['Total_Injured_Persons_US_Air_Carrier']}</li>` + 
-      `<li>Férreo: ${cant['Total_Injured_Persons_Railroad_Alone'] + 
-      cant['Total_Injured_Persons_Railroad_Train_Accidents'] +
-      cant['Total_Injured_Persons_Train_Accidents_Rail_Roads'] + 
-      cant['Total_Injured_Persons_Transit_Rail']}</li>` +
-      `<li>Maritimo y Fluvial: ${cant['Total_Injured_Persons_Water'] +
-        cant['Total_Injured_Persons_Water_Not_Related_To_Vessel_Casualties'] +
-        cant['Total_Injured_Persons_Water_Vessel_Related']}</li>` +
-      `<li>Buques: ${cant['Total_Injured_Persons_Freight_Vessel'] +
-        cant['Total_Injured_Persons_Passenger_Vessel']}</li>` +
-      `<li>Yates: ${cant['Total_Injured_Persons_Recreational_Boating'] + 0}</li>` +
-      `<li>Otros: ${cant['Total_Injured_Persons_Employee_Or_Worker'] +
-        cant['Total_Injured_Persons_Gas_Pipeline'] +
-        cant['Total_Injured_Persons_Hazardous_Liquid_Pipeline'] +
-        cant['Total_Injured_Persons_Industrial_Or_Other'] +
-        cant['Total_Injured_Persons_Other_Incident'] +
-        cant['Total_Injured_Persons_Other_Incidents'] +
-        cant['Total_Injured_Persons_Pipeline']}</li>` +
-    '</ul>' 
-    + '</div>' + '</div>' + '</div>';
-  }));
+  const cardCreater = (arr, section) => {
+    let cardData = '';
+  
+    arr.forEach((cant => {
+      cardData += '<div class="card">' + '<div class="card-block">' +
+      `<h3 class="card-title">${parseInt(cant.Year)}</h3>` +
+      `<div class="pie-chart"></div>` + '</div>' + '</div>' + '</div>';
+    }));
 
   section.innerHTML = cardData;
-};
+
+  const drawChart = (index, element) => {
+    if (index >= classifiedTransp.length) return;
+    let scores = Object.entries(classifiedTransp[index]); // creates an array like [key, value]
+    scores = scores.filter((score) => {
+      return score[0] !== YEAR_KEY
+    });
+
+    
+
+    let data = window.google.visualization.arrayToDataTable([
+      ['Medio de Transporte', 'Total Personas Accidentadas'], ...scores
+    ]);
+
+    let options = {
+      width: 400
+    };
+
+
+    let chart = new window.google.visualization.PieChart(element);
+    chart.draw(data, options);
+  }
+  
+  const sectionPieCharts = $(section).find(".pie-chart");
+  // dibujar los pie chart cuando se haya cargado la libreria
+  window.google.charts.setOnLoadCallback( () => {
+      sectionPieCharts.each(drawChart)
+    }
+  );
+
+};  
 
 cardCreater(dataRecent, tableDataPrevia);
 
