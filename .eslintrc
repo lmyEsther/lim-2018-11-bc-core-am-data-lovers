@@ -36,6 +36,7 @@
  },
   "extends": "eslint:recommended",
   "globals": {
+    "promedio": false,
     "injuries": false
   }
 }

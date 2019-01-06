@@ -108,6 +108,31 @@ window.injuries = {
   classifiedTransp
 };
 
-window.stats = {};
+const urbano = (arr) => {
+  let average = 0;
 
+  const sum = arr.reduce((acum, ele) => {
+    return acum + ele.urbano;
+  }, 0);
 
+  average = sum / arr.length;
+
+  return average;
+};
+
+const camion = (arr) => {
+  let average = 0;
+
+  const sum = arr.reduce((acum, ele) => {
+    return acum + ele.camion;
+  }, 0);
+
+  average = sum / arr.length;
+
+  return average;
+};
+
+window.promedio = {
+  urbano,
+  camion
+};
