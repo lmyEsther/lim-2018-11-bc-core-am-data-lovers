@@ -55,6 +55,7 @@ const selectOrderInjuries = document.getElementById('order-injuries');
   })); */
 
 const YEAR_KEY = 'year';
+window.google.charts.load('current', {'packages': ['corechart']});
 
 window.google.charts.load('current', {'packages': ['corechart']});
   
@@ -75,7 +76,6 @@ const cardCreater = (arr, section) => {
     scores = scores.filter((score) => {
       return score[0] !== YEAR_KEY;
     });
-    
     
     let data = window.google.visualization.arrayToDataTable([
       ['Medio de Transporte', 'Total Personas Accidentadas'], ...scores
@@ -114,14 +114,17 @@ btnFilterByRange.addEventListener('click', (event) => {
   const yearStar = selectYearStar.value;
   const yearFinish = selectYearFinish.value;
   const message = document.getElementById('messageError');
+  const averageText = document.getElementById('average')
 
   if (yearStar > yearFinish) {
     message.innerHTML = '<i>Por favor, ingresa un rango válido</i>';
     sectionCard.innerHTML = '';
+    averageText.innerHTML = '';
   } else {
     message.innerHTML = '';
     let arrFilterByYear = injuries.totalInjuredPersonsByYear(newData, yearStar, yearFinish);
     cardCreater(arrFilterByYear, sectionCard);
+    averageText.innerHTML = `<h4>El promedio de camion es ${promedio.camion(arrFilterByYear).toFixed(2)}</h4>`;
   }
 });
 
