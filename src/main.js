@@ -31,7 +31,7 @@ let btnFilterByRange = document.getElementById('btn-select-range');
 let arrAños = injuries.obtenerAñosUnicos(newData);
 // let dataTableFilter = document.getElementById('dataFilter');
 const selectOrderInjuries = document.getElementById('order-injuries');
-const YEAR_KEY = 'year';
+
 
 // ////////// generador de tarjetas en el HTML
 /* const cardCreater = (arr, section) => {
@@ -54,47 +54,50 @@ const YEAR_KEY = 'year';
     + '</div>' + '</div>' + '</div>';
   })); */
 
-window.google.charts.load('current', {'packages': ['corechart']});
+const YEAR_KEY = 'year';
 
+window.google.charts.load('current', {'packages': ['corechart']});
+  
 const cardCreater = (arr, section) => {
   let cardData = '';
-  
+    
   arr.forEach((cant => {
     cardData += '<div class="card">' + '<div class="card-block">' +
-      `<h3 class="card-title">${parseInt(cant.Year)}</h3>` +
+      `<h3 class="card-title">${parseInt(cant.year)}</h3>` +
       '<div class="pie-chart"></div>' + '</div>' + '</div>' + '</div>';
   }));
-
+    
   section.innerHTML = cardData;
-
+    
   const drawChart = (index, element) => {
-    if (index >= classifiedTransp.length) return;
-    let scores = Object.entries(classifiedTransp[index]); // creates an array like [key, value]
+    if (index >= arr.length) return;
+    let scores = Object.entries(arr[index]); // creates an array like [key, value]
     scores = scores.filter((score) => {
       return score[0] !== YEAR_KEY;
     });
     
-
+    
     let data = window.google.visualization.arrayToDataTable([
       ['Medio de Transporte', 'Total Personas Accidentadas'], ...scores
     ]);
-
+    
     let options = {
       width: 400
     };
-
-
+    
+    
     let chart = new window.google.visualization.PieChart(element);
     chart.draw(data, options);
   };
-  
+    
+  // eslint-disable-next-line no-undef
   const sectionPieCharts = $(section).find('.pie-chart');
   // dibujar los pie chart cuando se haya cargado la libreria
   window.google.charts.setOnLoadCallback(() => {
     sectionPieCharts.each(drawChart);
   }
   );
-};  
+};
 
 cardCreater(dataRecent, tableDataPrevia);
 
@@ -123,7 +126,7 @@ btnFilterByRange.addEventListener('click', (event) => {
 });
 
 selectOrderInjuries.addEventListener('change', () => {
-  const arrOrderData = injuries.sortData(newData, selectOrderInjuries.value);
+  const arrOrderData = injuries.sortDataYear(newData, selectOrderInjuries.value);
   cardCreater(arrOrderData, sectionCard);
 });
 
