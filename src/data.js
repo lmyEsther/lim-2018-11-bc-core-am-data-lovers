@@ -48,7 +48,7 @@ window.injuries = {
   sortData
 };
 
-/* const urbano = (arr) => {
+const urbano = (arr) => {
   let average = 0;
 
   const sum = arr.reduce((acum, ele) => {
@@ -58,7 +58,7 @@ window.injuries = {
   average = sum / arr.length;
 
   return average;
-}; */
+};
 
 /* const camion = (arr) => {
   let average = 0;
@@ -73,6 +73,6 @@ window.injuries = {
 }; */
 
 window.promedio = {
-  // urbano
+  urbano
   // camion
 };
