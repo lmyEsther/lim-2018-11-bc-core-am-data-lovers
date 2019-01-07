@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
 }
+
+
 .contenedor {
     min-width: 100px;
     max-width: 1200px;
@@ -17,6 +19,7 @@ header {
     overflow: hidden;
 }
 
+
 .wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -26,7 +29,7 @@ header {
 
 /** Navegacion **/
 .navegacion {
-  background-color: #244B72;
+  background-color: #112e51;
 }
 
 nav {
@@ -58,15 +61,15 @@ nav ul li button {
   text-align: center;
   padding: 1em;
   font-size: 14px;
-  background-color: #244B72;
+  background-color: #112e51;
   border: none;
   letter-spacing: 0.1em;
 
 }
 
 nav ul li button:hover {
-  background-color: #5DADE2;
-  color: #000000;
+  background-color: #0071bc;
+  color: #212121;
   text-decoration: none;
 }
  /**fin Navegacion **/
@@ -88,7 +91,6 @@ nav ul li button:hover {
   width: 100%;
 }
 
-
 div table caption {
   caption-side:top;
   font-weight: bold;
@@ -100,14 +102,6 @@ div table caption {
 
 #previa {
   text-align: center;
-}
-
-#previa tr:nth-child(odd) {
-  background-color:#EAF2F8;
-}
-
-#previa tr:nth-child(even) {
-  background-color: #ffffff;
 }
 
 .ocultar {

@@ -36,6 +36,7 @@
  },
   "extends": "eslint:recommended",
   "globals": {
+    "newDataClass": false,
     "promedio": false,
     "injuries": false
   }
