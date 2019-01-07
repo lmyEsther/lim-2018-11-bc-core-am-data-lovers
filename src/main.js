@@ -90,7 +90,7 @@ btnFilterByRange.addEventListener('click', (event) => {
   const yearStar = selectYearStar.value;
   const yearFinish = selectYearFinish.value;
   const message = document.getElementById('messageError');
-  const averageText = document.getElementById('average')
+  const averageText = document.getElementById('average');
 
   if (yearStar > yearFinish) {
     message.innerHTML = '<i>Por favor, ingresa un rango válido</i>';
@@ -100,7 +100,12 @@ btnFilterByRange.addEventListener('click', (event) => {
     message.innerHTML = '';
     let arrFilterByYear = injuries.totalInjuredPersonsByYear(newData, yearStar, yearFinish);
     cardCreater(arrFilterByYear, sectionCard);
-    averageText.innerHTML = `<h4>El promedio de camion es ${promedio.camion(arrFilterByYear).toFixed(2)}</h4>`;
+    averageText.innerHTML = `<ul><li>El promedio de urbano es ${promedio.urbano(arrFilterByYear).toFixed(2)}</li>
+       <li>El promedio de aereo es ${promedio.aereo(arrFilterByYear).toFixed(2)}</li>
+      <li>El promedio de ferreo es ${promedio.ferreo(arrFilterByYear).toFixed(2)}</li>
+      <li>El promedio de maritimo es ${promedio.maritimo(arrFilterByYear).toFixed(2)}</li>
+      <li>El promedio de otros es ${promedio.otros(arrFilterByYear).toFixed(2)}</li>
+      </ul>`;
   }
 });
 
