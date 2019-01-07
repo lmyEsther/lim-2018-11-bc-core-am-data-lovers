@@ -120,11 +120,45 @@ const urbano = (arr) => {
   return average;
 };
 
-const camion = (arr) => {
+const aereo = (arr) => {
   let average = 0;
 
   const sum = arr.reduce((acum, ele) => {
-    return acum + ele.camion;
+    return acum + ele.aereo;
+  }, 0);
+
+  average = sum / arr.length;
+  return average;
+};
+
+const ferreo = (arr) => {
+  let average = 0;
+
+  const sum = arr.reduce((acum, ele) => {
+    return acum + ele.ferreo;
+  }, 0);
+
+  average = sum / arr.length;
+  return average;
+};
+
+const maritimo = (arr) => {
+  let average = 0;
+
+  const sum = arr.reduce((acum, ele) => {
+    return acum + ele.maritimo;
+  }, 0);
+
+  average = sum / arr.length;
+
+  return average;
+};
+
+const otros = (arr) => {
+  let average = 0;
+
+  const sum = arr.reduce((acum, ele) => {
+    return acum + ele.otros;
   }, 0);
 
   average = sum / arr.length;
@@ -133,6 +167,9 @@ const camion = (arr) => {
 };
 
 window.promedio = {
-  urbano,
-  camion
+  urbano, 
+  aereo,
+  ferreo,
+  maritimo,
+  otros
 };

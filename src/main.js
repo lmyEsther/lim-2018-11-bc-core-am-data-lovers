@@ -111,5 +111,3 @@ selectOrderInjuries.addEventListener('change', () => {
 
 buttonData.addEventListener('click', clickButtonData);
 buttonStart.addEventListener('click', clickButtonStart);
-
-console.log(promedio.camion(newData));
