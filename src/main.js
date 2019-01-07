@@ -21,9 +21,9 @@ const clickButtonStart = () => {
 
 
 const data = window.INJURIES;
-const newData = injuries.classifiedTransp(data);
-let sectionCard = document.getElementById('card');
-let tableDataPrevia = document.getElementById('previa');
+const newData = newDataClass.classifiedTransp(data);
+let sectionCard = document.querySelector('#card');
+let tableDataPrevia = document.querySelector('#previa');
 let dataRecent = injuries.recentYears(newData).reverse();
 let selectYearStar = document.getElementById('añoInicio');
 let selectYearFinish = document.getElementById('añoFin');
@@ -54,18 +54,15 @@ const selectOrderInjuries = document.getElementById('order-injuries');
     + '</div>' + '</div>' + '</div>';
   })); */
 
-const YEAR_KEY = 'year';
-window.google.charts.load('current', {'packages': ['corechart']});
-
 window.google.charts.load('current', {'packages': ['corechart']});
   
 const cardCreater = (arr, section) => {
   let cardData = '';
     
   arr.forEach((cant => {
-    cardData += '<div class="card">' + '<div class="card-block">' +
-      `<h3 class="card-title">${parseInt(cant.year)}</h3>` +
-      '<div class="pie-chart"></div>' + '</div>' + '</div>' + '</div>';
+    cardData += `<div class="card">
+                <h3 class="card-title">${parseInt(cant.year)}</h3>
+                <div class="pie-chart"></div></div>`;
   }));
     
   section.innerHTML = cardData;
@@ -74,7 +71,7 @@ const cardCreater = (arr, section) => {
     if (index >= arr.length) return;
     let scores = Object.entries(arr[index]); // creates an array like [key, value]
     scores = scores.filter((score) => {
-      return score[0] !== YEAR_KEY;
+      return score[0] !== 'year';
     });
     
     let data = window.google.visualization.arrayToDataTable([
@@ -82,9 +79,8 @@ const cardCreater = (arr, section) => {
     ]);
     
     let options = {
-      width: 400
+      width: 400,
     };
-    
     
     let chart = new window.google.visualization.PieChart(element);
     chart.draw(data, options);
@@ -95,8 +91,7 @@ const cardCreater = (arr, section) => {
   // dibujar los pie chart cuando se haya cargado la libreria
   window.google.charts.setOnLoadCallback(() => {
     sectionPieCharts.each(drawChart);
-  }
-  );
+  });
 };
 
 cardCreater(dataRecent, tableDataPrevia);
@@ -114,7 +109,7 @@ btnFilterByRange.addEventListener('click', (event) => {
   const yearStar = selectYearStar.value;
   const yearFinish = selectYearFinish.value;
   const message = document.getElementById('messageError');
-  const averageText = document.getElementById('average')
+  const averageText = document.getElementById('average');
 
   if (yearStar > yearFinish) {
     message.innerHTML = '<i>Por favor, ingresa un rango válido</i>';
@@ -124,12 +119,32 @@ btnFilterByRange.addEventListener('click', (event) => {
     message.innerHTML = '';
     let arrFilterByYear = injuries.totalInjuredPersonsByYear(newData, yearStar, yearFinish);
     cardCreater(arrFilterByYear, sectionCard);
-    averageText.innerHTML = `<h4>El promedio de camion es ${promedio.camion(arrFilterByYear).toFixed(2)}</h4>`;
+    averageText.innerHTML = `<h4>El promedio de Personas Heridas en Transporte Urbano es ${promedio.urbano(arrFilterByYear).toFixed(2)}</h4>`;
   }
 });
 
 selectOrderInjuries.addEventListener('change', () => {
-  const arrOrderData = injuries.sortDataYear(newData, selectOrderInjuries.value);
+  const orderBy = selectOrderInjuries.value;
+
+  let orderCondition;
+
+  switch (orderBy) {
+  case 'lessRecent':
+    orderCondition = 'asc';
+    break;
+  case 'lessUrbano':
+    orderCondition = 'asc';
+    break;
+  case 'mostRecent':
+    orderCondition = 'desc';
+    break;
+  case 'mostUrbano':
+    orderCondition = 'desc';
+    break;
+  default:
+  }
+  const arrOrderData = injuries.sortData(newData, orderBy, orderCondition);
+
   cardCreater(arrOrderData, sectionCard);
 });
 

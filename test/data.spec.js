@@ -18,11 +18,6 @@ const input3 = [{urbano: 3834009, yates: 2620, year: 1960},
   {urbano: 5652384, yates: 3559, year: 1993}, 
   {urbano: 5903800, yates: 3822, year: 1990}];
 
-const output5 = [{urbano: 5903800, yates: 3822, year: 1990},
-  {urbano: 5652384, yates: 3559, year: 1993}, 
-  {urbano: 5444643, yates: 4355, year: 2000}, 
-  {urbano: 3834009, yates: 2620, year: 1960}];
-
 const output2 = [{Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, year: '2010-01-04'}, 
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, year: '2011-01-04'},
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, year: '2012-01-04'},
@@ -34,10 +29,27 @@ const output3 = [{Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, year: '2013-01-04'},
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, year: '2014-01-04'}];
 
-const output4 = [{urbano: 5444643, yates: 4355, year: 2000},
+const yearMaxMin = [{urbano: 5444643, yates: 4355, year: 2000},
   {urbano: 5652384, yates: 3559, year: 1993},
   {urbano: 5903800, yates: 3822, year: 1990},
   {urbano: 3834009, yates: 2620, year: 1960}];
+
+const yearMinMax = [
+  {urbano: 3834009, yates: 2620, year: 1960},
+  {urbano: 5903800, yates: 3822, year: 1990},
+  {urbano: 5652384, yates: 3559, year: 1993},
+  {urbano: 5444643, yates: 4355, year: 2000}];
+
+const urbanoMaxMin = [{urbano: 5903800, yates: 3822, year: 1990},
+  {urbano: 5652384, yates: 3559, year: 1993},
+  {urbano: 5444643, yates: 4355, year: 2000},
+  {urbano: 3834009, yates: 2620, year: 1960}];
+
+const urbanoMinMax = [
+  {urbano: 3834009, yates: 2620, year: 1960},
+  {urbano: 5444643, yates: 4355, year: 2000},
+  {urbano: 5652384, yates: 3559, year: 1993},
+  {urbano: 5903800, yates: 3822, year: 1990}];
 
 describe('injuries', () => {
   it('debería ser un objeto', () => {
@@ -67,26 +79,27 @@ describe('injuries', () => {
       expect(injuries.totalInjuredPersonsByYear(input2, 2012, 2014)).toEqual(output3);
     });
   });
-  describe('injuries.sortDataYear', () => {
+  describe('injuries.sortData', () => {
     it('Deberia ser una funcion', () => {
-      expect(typeof injuries.sortDataYear).toBe('function');
+      expect(typeof injuries.sortData).toBe('function');
     });
     it('Deberiar retornar un array con años ordenados de mayor a menor', () => {
-      expect(injuries.sortDataYear(input3, 'mostRecent')).toEqual(output4); 
+      expect(injuries.sortData(input3, 'mostRecent', 'desc')).toEqual(yearMaxMin); 
     });
-  });
-  describe('injuries.sortDataUrbano', () => {
-    it('Deberia ser una funcion', () => {
-      expect(typeof injuries.sortDataUrbano).toBe('function');
+    it('Deberia retonar un array con años ordenados de menor a mayor', () => {
+      expect(injuries.sortData(input3, 'lessRecent', 'asc')).toEqual(yearMinMax);
     });
-    it('Deberia retornar un array con el total de personas heridas en Urbano de mayor a menor', () => {
-      expect(injuries.sortDataUrbano(input3, 'mostInjured')).toEqual(output5);
+    it('Deberia retonar un array con personas heridas en Urbano ordenados de mayor a menor', () => {
+      expect(injuries.sortData(input3, 'mostUrbano', 'desc')).toEqual(urbanoMaxMin);
+    });
+    it('Deberia retonar un array con personas heridas en Urbano de menor a mayor', () => {
+      expect(injuries.sortData(input3, 'lessUrbano', 'asc')).toEqual(urbanoMinMax);
     });
   });
 });
 
 describe('stats', () => {
   it('Debería ser un objeto', () => {
-    expect(typeof stats).toBe('object');
+    expect(typeof promedio).toBe('object');
   });
 });
