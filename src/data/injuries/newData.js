@@ -1,4 +1,4 @@
-const classifiedTransp = (arr) => {
+const classifiedTransp = (arr) => { 
     const copyData3 = [ ...arr];
     const newArr = [];
   

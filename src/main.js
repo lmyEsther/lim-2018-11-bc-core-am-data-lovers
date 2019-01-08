@@ -1,6 +1,5 @@
 const buttonData = document.getElementById('data');
 const buttonStart = document.getElementById('start');
-// const buttonStats = document.getElementById('stats');
 const screenStar = document.getElementById('screenStar');
 const allData = document.getElementById('allData');
 
@@ -29,11 +28,10 @@ let selectYearStar = document.getElementById('añoInicio');
 let selectYearFinish = document.getElementById('añoFin');
 let btnFilterByRange = document.getElementById('btn-select-range');
 let arrAños = injuries.obtenerAñosUnicos(newData);
-// let dataTableFilter = document.getElementById('dataFilter');
 const selectOrderInjuries = document.getElementById('order-injuries');
 
 
-// ////////// generador de tarjetas en el HTML
+// generador de tarjetas en el HTML
 /* const cardCreater = (arr, section) => {
   let cardData = '';
 
@@ -119,11 +117,13 @@ btnFilterByRange.addEventListener('click', (event) => {
     message.innerHTML = '';
     let arrFilterByYear = injuries.totalInjuredPersonsByYear(newData, yearStar, yearFinish);
     cardCreater(arrFilterByYear, sectionCard);
-    averageText.innerHTML = `<ul><li>El promedio de urbano es ${promedio.urbano(arrFilterByYear)}</li>
-       <li>El promedio de aereo es ${promedio.aereo(arrFilterByYear)}</li>
-      <li>El promedio de ferreo es ${promedio.ferrocarril(arrFilterByYear)}</li>
-      <li>El promedio de maritimo es ${promedio.maritimo(arrFilterByYear)}</li>
-      <li>El promedio de otros es ${promedio.otros(arrFilterByYear)}</li>
+    averageText.innerHTML = `<ul>
+      <li>Average number of people injured by transport</li>
+      <li>Urban es ${promedio.urbano(arrFilterByYear)}</li>
+      <li>Air es ${promedio.aereo(arrFilterByYear)}</li>
+      <li>Railway es ${promedio.ferrocarril(arrFilterByYear)}</li>
+      <li>Seaborne es ${promedio.maritimo(arrFilterByYear)}</li>
+      <li>Others es ${promedio.otros(arrFilterByYear)}</li>
       </ul>`;
   }
 });
@@ -148,8 +148,8 @@ selectOrderInjuries.addEventListener('change', () => {
     break;
   default:
   }
-  const arrOrderData = injuries.sortData(newData, orderBy, orderCondition);
 
+  const arrOrderData = injuries.sortData(newData, orderBy, orderCondition);
   cardCreater(arrOrderData, sectionCard);
 });
 
