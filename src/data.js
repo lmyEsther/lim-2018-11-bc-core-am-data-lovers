@@ -1,5 +1,5 @@
 const recentYears = (arr) => {
-  return arr.filter(ele => parseInt(ele.year) >= 2010 && parseInt(ele.year) <= 2015);
+  return arr.filter(ele => parseInt(ele.year) >= 2012 && parseInt(ele.year) <= 2015);
 };
 
 const obtenerAñosUnicos = (arr) => {
@@ -55,7 +55,7 @@ const urbano = (arr) => {
     return acum + ele.urbano;
   }, 0);
 
-  average = sum / arr.length;
+  average = parseInt(sum / arr.length);
 
   return average;
 };
@@ -67,7 +67,7 @@ const aereo = (arr) => {
     return acum + ele.aereo;
   }, 0);
 
-  average = sum / arr.length;
+  average = parseInt(sum / arr.length);
   return average;
 };
 
@@ -75,10 +75,10 @@ const ferreo = (arr) => {
   let average = 0;
 
   const sum = arr.reduce((acum, ele) => {
-    return acum + ele.ferreo;
+    return acum + ele.ferrocarril;
   }, 0);
 
-  average = sum / arr.length;
+  average = parseInt(sum / arr.length);
   return average;
 };
 
@@ -89,7 +89,7 @@ const maritimo = (arr) => {
     return acum + ele.maritimo;
   }, 0);
 
-  average = sum / arr.length;
+  average = parseInt(sum / arr.length);
 
   return average;
 };
@@ -101,7 +101,7 @@ const otros = (arr) => {
     return acum + ele.otros;
   }, 0);
 
-  average = sum / arr.length;
+  average = parseInt(sum / arr.length);
 
   return average;
 };

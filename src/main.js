@@ -119,11 +119,11 @@ btnFilterByRange.addEventListener('click', (event) => {
     message.innerHTML = '';
     let arrFilterByYear = injuries.totalInjuredPersonsByYear(newData, yearStar, yearFinish);
     cardCreater(arrFilterByYear, sectionCard);
-    averageText.innerHTML = `<ul><li>El promedio de urbano es ${promedio.urbano(arrFilterByYear).toFixed(2)}</li>
-       <li>El promedio de aereo es ${promedio.aereo(arrFilterByYear).toFixed(2)}</li>
-      <li>El promedio de ferreo es ${promedio.ferreo(arrFilterByYear).toFixed(2)}</li>
-      <li>El promedio de maritimo es ${promedio.maritimo(arrFilterByYear).toFixed(2)}</li>
-      <li>El promedio de otros es ${promedio.otros(arrFilterByYear).toFixed(2)}</li>
+    averageText.innerHTML = `<ul><li>El promedio de urbano es ${promedio.urbano(arrFilterByYear)}</li>
+       <li>El promedio de aereo es ${promedio.aereo(arrFilterByYear)}</li>
+      <li>El promedio de ferreo es ${promedio.ferrocarril(arrFilterByYear)}</li>
+      <li>El promedio de maritimo es ${promedio.maritimo(arrFilterByYear)}</li>
+      <li>El promedio de otros es ${promedio.otros(arrFilterByYear)}</li>
       </ul>`;
   }
 });

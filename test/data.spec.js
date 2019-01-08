@@ -22,14 +22,13 @@ const input4 = [{aereo: 2937, ferreo: 3982, maritimo: 1837, otros: 4872},
   {aereo: 2836, ferreo: 1837, maritimo: 2827, otros: 3726},
   {aereo: 1873, ferreo: 2837, maritimo: 278, otros: 473}];
  
-const outputPromedioAereo = 2548.67; 
-const outputPromedioFerreo = 2885.33;
-const outputPromedioMaritimo = 1647.33;
-const outputPromedioOtros = 3023.67;
+const outputPromedioAereo = 2548; 
+const outputPromedioFerreo = 2885;
+const outputPromedioMaritimo = 1647;
+const outputPromedioOtros = 3023;
 const outputPromedioUrbano = 5208709;
 
-const output2 = [{Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, year: '2010-01-04'}, 
-  {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, year: '2011-01-04'},
+const output2 = [
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, year: '2012-01-04'},
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, year: '2013-01-04'},
   {Total_Injured_Persons: 2237367, Total_Injured_Persons_Air: 301, year: '2014-01-04'},
@@ -118,7 +117,7 @@ describe('Promedio', () => {
       expect(typeof promedio.aereo).toBe('function');
     });
     it('Deberia retornar el promedio de las personas heridas por medio de transporte aereo', () => {
-      expect(parseFloat(promedio.aereo(input4).toFixed(2))).toEqual(outputPromedioAereo);
+      expect(parseFloat(promedio.aereo(input4))).toEqual(outputPromedioAereo);
     });
   });
 
@@ -127,7 +126,7 @@ describe('Promedio', () => {
       expect(typeof promedio.ferreo).toBe('function');
     });
     it('Deberia retornar el promedio de las personas heridas por medio de transporte ferreo', () => {
-      expect(parseFloat(promedio.ferreo(input4).toFixed(2))).toEqual(outputPromedioFerreo);
+      expect(parseFloat(promedio.ferreo(input4))).toEqual(outputPromedioFerreo);
     });
   });
 
@@ -136,7 +135,7 @@ describe('Promedio', () => {
       expect(typeof promedio.maritimo).toBe('function');
     });
     it('Deberia retornar el promedio de las personas heridas por medio de transporte maritimo', () => {
-      expect(parseFloat(promedio.maritimo(input4).toFixed(2))).toEqual(outputPromedioMaritimo);
+      expect(parseFloat(promedio.maritimo(input4))).toEqual(outputPromedioMaritimo);
     });
   });
 
@@ -145,7 +144,7 @@ describe('Promedio', () => {
       expect(typeof promedio.otros).toBe('function');
     });
     it('Deberia retornar el promedio de las personas heridas por medio de transporte otros', () => {
-      expect(parseFloat(promedio.otros(input4).toFixed(2))).toEqual(outputPromedioOtros);
+      expect(parseFloat(promedio.otros(input4))).toEqual(outputPromedioOtros);
     });
   });
 
@@ -154,7 +153,7 @@ describe('Promedio', () => {
       expect(typeof promedio.urbano).toBe('function');
     });
     it('Deberia retornar el promedio de las personas heridas por medio de transporte urbano', () => {
-      expect(parseFloat(promedio.urbano(input3).toFixed(2))).toEqual(outputPromedioUrbano);
+      expect(parseFloat(promedio.urbano(input3))).toEqual(outputPromedioUrbano);
     });
   });
 });
