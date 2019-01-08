@@ -103,25 +103,27 @@
                 </div>
               </div>
             </div>
-
     </section>
+    
     <section id="allData" class="ocultar">
             <div class="filter">
+             <div class="year">
                 <h3>Filtrar por Rango de Año</h3>
-              <select id="añoInicio"></select>
-              <select id="añoFin"></select>
-              <button id="btn-select-range">Filtrar</button>
+              <select class="buttonAños"  id="añoInicio"></select>
+              <select class="buttonAños"  id="añoFin"></select>
+              <button class="buttonFilter" id="btn-select-range">Filtrar</button>
               <p id="messageError"></p>
-            </div>
+             </div>
             
-            <div>
+             <div class="orden">
               <h3>Ordenar por</h3>
               <select class="type-select" id="order-injuries">
                 <option value="lessRecent">Año: Menos Recientes</option>
                 <option value="mostRecent">Año: Más Recientes</option>
-                <option value="lessUrbano">Menos Personas Heridas: Urbano</option>
-                <option value="mostUrbano">Más Personas Heridas: Urbano</option>
+                <option value="lessUrbano">Menor Incidencia por transporte Urbano</option>
+                <option value="mostUrbano">Mayor Incidencia por transporte Urbano</option>
               </select>
+             </div>
             </div>
 
             <div class="">
