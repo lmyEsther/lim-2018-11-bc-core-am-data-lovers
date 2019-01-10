@@ -1,7 +1,7 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
-}
+} */
 
 
 .contenedor {
@@ -11,9 +11,9 @@
     height: auto;
 }
 
-.container {
+/* .container {
   height: 65vh;
-}
+} */
 header {
     width: 100%;
     overflow: hidden;
@@ -32,14 +32,11 @@ header {
   background-color: #112e51;
 }
 
-nav {
-  width: 1200px;
-  margin: 0 auto;
-  position: relative;
-}
-
 nav ul {
-  list-style: none
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 nav ul li {
@@ -59,7 +56,8 @@ nav ul li button {
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  padding: 1em;
+  padding: 14px 16px;
+  text-decoration: none;;
   font-size: 14px;
   background-color: #112e51;
   border: none;
@@ -111,3 +109,51 @@ div table caption {
 .mostrar {
   display: block;
 }
+
+.year .orden{
+  display: inline-block;
+}
+
+.year {
+  margin: 20px;
+}
+
+.orden {
+  margin: 20px;
+}
+
+.filter{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.buttonAños{
+  background-color: #9bdaf1;
+    color: black;
+    border: 0;
+    border-radius: 30px;
+    width: 75px;
+    margin: 4px;
+    padding: 10px;
+ }
+
+ .buttonFilter{
+  background-color: #8ba6ca;
+    color: black;
+    border: 0;
+    border-radius: 8px;
+    width: 75px;
+    margin: 4px;
+    padding: 10px;
+ }
+
+ .type-select{
+  background-color: #9bdaf1;
+    color: black;
+    border: 0;
+    border-radius: 30px;
+    width: 290px;
+    margin: 4px;
+    padding: 10px;
+ }
