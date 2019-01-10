@@ -1,9 +1,7 @@
 const buttonData = document.getElementById('data');
 const buttonStart = document.getElementById('start');
-// const buttonStats = document.getElementById('stats');
 const screenStar = document.getElementById('screenStar');
 const allData = document.getElementById('allData');
-
 
 const clickButtonData = () => {
   allData.classList.add('mostrar');
@@ -19,7 +17,6 @@ const clickButtonStart = () => {
   screenStar.classList.remove('ocultar');
 };
 
-
 const data = window.INJURIES;
 const newData = newDataClass.classifiedTransp(data);
 let sectionCard = document.querySelector('#card');
@@ -29,11 +26,10 @@ let selectYearStar = document.getElementById('añoInicio');
 let selectYearFinish = document.getElementById('añoFin');
 let btnFilterByRange = document.getElementById('btn-select-range');
 let arrAños = injuries.obtenerAñosUnicos(newData);
-// let dataTableFilter = document.getElementById('dataFilter');
 const selectOrderInjuries = document.getElementById('order-injuries');
 
 
-// ////////// generador de tarjetas en el HTML
+// generador de tarjetas en el HTML
 /* const cardCreater = (arr, section) => {
   let cardData = '';
 
@@ -42,14 +38,14 @@ const selectOrderInjuries = document.getElementById('order-injuries');
     '<div class="card">' + '<div class="card-block">' +
     `<h3 class="card-title">${cant['year']}</h3>` +
       '<ul class="list-unstyled">' + 
-      `<li>Urbano: ${cant['urbano']}</li>` +
-      `<li>Camión: ${cant['camion']}</li>` +
-      `<li>Aéreo: ${cant['aereo']}</li>` + 
-      `<li>Férreo: ${cant['ferreo']}</li>` +
-      `<li>Maritimo y Fluvial: ${cant['maritimo']}</li>` +
-      `<li>Buques: ${cant['buques']}</li>` +
-      `<li>Yates: ${cant['yates'] + 0}</li>` +
-      `<li>Otros: ${cant['otros']}</li>` +
+      `<li>Urban: ${cant['urbano']}</li>` +
+      `<li>Truck: ${cant['camion']}</li>` +
+      `<li>Air: ${cant['aereo']}</li>` + 
+      `<li>Railway: ${cant['ferreo']}</li>` +
+      `<li>Seaborne: ${cant['maritimo']}</li>` +
+      `<li>Vessels: ${cant['buques']}</li>` +
+      `<li>Yachts: ${cant['yates'] + 0}</li>` +
+      `<li>Others: ${cant['otros']}</li>` +
     '</ul>' 
     + '</div>' + '</div>' + '</div>';
   })); */
@@ -66,7 +62,7 @@ const cardCreater = (arr, section) => {
   }));
     
   section.innerHTML = cardData;
-    
+  // pie charts
   const drawChart = (index, element) => {
     if (index >= arr.length) return;
     let scores = Object.entries(arr[index]); // creates an array like [key, value]
@@ -86,7 +82,6 @@ const cardCreater = (arr, section) => {
     chart.draw(data, options);
   };
     
-  // eslint-disable-next-line no-undef
   const sectionPieCharts = $(section).find('.pie-chart');
   // dibujar los pie chart cuando se haya cargado la libreria
   window.google.charts.setOnLoadCallback(() => {
@@ -103,6 +98,7 @@ arrAños.forEach((año) => {
   selectYearFinish.innerHTML += `<option value = ${año}>${año}</option>`;
 });
 
+// evento para filtrar la data
 btnFilterByRange.addEventListener('click', (event) => { 
   event.preventDefault();
   
@@ -118,16 +114,25 @@ btnFilterByRange.addEventListener('click', (event) => {
   } else {
     message.innerHTML = '';
     let arrFilterByYear = injuries.totalInjuredPersonsByYear(newData, yearStar, yearFinish);
-    cardCreater(arrFilterByYear, sectionCard);
-    averageText.innerHTML = `<ul><li>El promedio de urbano es ${promedio.urbano(arrFilterByYear).toFixed(2)}</li>
-       <li>El promedio de aereo es ${promedio.aereo(arrFilterByYear).toFixed(2)}</li>
-      <li>El promedio de ferreo es ${promedio.ferreo(arrFilterByYear).toFixed(2)}</li>
-      <li>El promedio de maritimo es ${promedio.maritimo(arrFilterByYear).toFixed(2)}</li>
-      <li>El promedio de otros es ${promedio.otros(arrFilterByYear).toFixed(2)}</li>
+    
+    if (yearStar >= 1990) {
+      cardCreater(arrFilterByYear, sectionCard);
+      averageText.innerHTML = `<ul class="list-unstyled">
+      <li>The Average Number of People Injured by Transport</li>
+      <li>Urban: ${promedio.urbano(arrFilterByYear)}</li>
+      <li>Air: ${promedio.aereo(arrFilterByYear)}</li>
+      <li>Railway: ${promedio.ferreo(arrFilterByYear)}</li>
+      <li>Seaborne: ${promedio.maritimo(arrFilterByYear)}</li>
+      <li>Others: ${promedio.otros(arrFilterByYear)}</li>
       </ul>`;
+    } else {
+      cardCreater(arrFilterByYear, sectionCard);
+      averageText.innerHTML = '';
+    }
   }
 });
 
+// evento para ordenar data
 selectOrderInjuries.addEventListener('change', () => {
   const orderBy = selectOrderInjuries.value;
 
@@ -148,10 +153,10 @@ selectOrderInjuries.addEventListener('change', () => {
     break;
   default:
   }
-  const arrOrderData = injuries.sortData(newData, orderBy, orderCondition);
 
+  const arrOrderData = injuries.sortData(newData, orderBy, orderCondition);
   cardCreater(arrOrderData, sectionCard);
 });
 
-buttonData.addEventListener('click', clickButtonData);
-buttonStart.addEventListener('click', clickButtonStart);
+buttonData.addEventListener('click', clickButtonData); // muestra ventana principal
+buttonStart.addEventListener('click', clickButtonStart); // muestra ventana de datos
