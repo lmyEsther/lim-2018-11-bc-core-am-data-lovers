@@ -23,23 +23,22 @@ const sortData = (arr, sortBy, sortOrder) => {
   
   if (sortOrder === 'asc') {
     if (sortBy === 'lessRecent') {
-      injuriesOrder = copyData.sort((aaa, bbb) => (aaa['year'] > bbb['year'] ? 1 : -1));
+      injuriesOrder = copyData.sort((aaa, bbb) => (aaa.year > bbb.year ? 1 : -1));
       return injuriesOrder;
     } else if (sortBy === 'lessUrbano') {
-      injuriesOrder = copyData.sort((aaa, bbb) => (aaa['urbano'] > bbb['urbano'] ? 1 : -1));
+      injuriesOrder = copyData.sort((aaa, bbb) => (aaa.urbano > bbb.urbano ? 1 : -1));
       return injuriesOrder;
     }
   } else if (sortOrder === 'desc') {
     if (sortBy === 'mostRecent') {
-      injuriesOrder = copyData.sort((aaa, bbb) => (aaa['year'] > bbb['year'] ? 1 : -1));
+      injuriesOrder = copyData.sort((aaa, bbb) => (aaa.year > bbb.year ? 1 : -1));
       return injuriesOrder.reverse();
     } else if (sortBy === 'mostUrbano') {
-      injuriesOrder = copyData.sort((aaa, bbb) => (aaa['urbano'] > bbb['urbano'] ? 1 : -1));
+      injuriesOrder = copyData.sort((aaa, bbb) => (aaa.urbano > bbb.urbano ? 1 : -1));
       return injuriesOrder.reverse();
     }
   }
 };
-
 
 window.injuries = {
   recentYears,

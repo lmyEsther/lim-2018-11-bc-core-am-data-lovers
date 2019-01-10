@@ -8,10 +8,11 @@ const classifiedTransp = (arr) => {
       obj.urbano = (cant['Total_Injured_Persons_Highway'] + 
           cant['Total_Injured_Persons_Bus_Occupants'] +
           cant['Total_Injured_Persons_Commuter_Carrier'] + 
-          cant['Total_Injured_Persons_Motorcyclists'] +
           cant['Total_Injured_Persons_Passenger_Car_Occupants'] +
-          cant['Total_Injured_Persons_Pedalcyclists'] +
-          cant['Total_Injured_Persons_Pedestrians']);
+          cant['Total_Injured_Persons_Pedalcyclists']);
+    
+      obj.motocicleta = (cant['Total_Injured_Persons_Motorcyclists'] +
+        cant['Total_Injured_Persons_Pedestrians']);
   
       obj.carretera = (cant['Total_Injured_Persons_Truck_Occupants_Light'] +
           cant['Total_Injured_Persons_Truck_Occupants_Large']);
