@@ -84,7 +84,6 @@ const cardCreater = (arr, section) => {
     chart.draw(data, options);
   };
     
-  // eslint-disable-next-line no-undef
   const sectionPieCharts = $(section).find('.pie-chart');
   // dibujar los pie chart cuando se haya cargado la libreria
   window.google.charts.setOnLoadCallback(() => {
