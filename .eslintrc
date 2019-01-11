@@ -38,6 +38,7 @@
   "globals": {
     "newDataClass": false,
     "promedio": false,
-    "injuries": false
+    "injuries": false,
+    "$": false
   }
 }
