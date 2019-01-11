@@ -32,10 +32,9 @@ Se pudieron realizar dos entrevistas, en base a estas se definieron las historia
 
 3. Yo como usuario quiero: Tener la opción de ordenar los datos desde el año mas reciente y viceversa.
 
-4. Yo como usuario quiero: visualizar la data en graficos para un mejor entendimiento.
+4. Yo como usuario quiero: Tener la opcion para ordenar los datos de menor incidencia a mayor incidencia por medio de transporte urbano, ya que este es el medio con mayor incidencia a lo largo de los años y poder tomar medidas de seguridad en el transito terrestre.
 
-5. Yo como usuario quiero: ver promedio de la cantidad de personas heridas en un rango de años elegido previamente por tipo de transporte, para analizar como ha sido la incidencia con los avances tecnologicos en los distintos medios de transportes.
-
+5. Yo como usuario quiero: Visualizar la data en graficos para un mejor entendimiento.
 
 # Diseño de la Interfaz de Usuario
 
