@@ -28,28 +28,6 @@ let btnFilterByRange = document.getElementById('btn-select-range');
 let arrAños = injuries.obtenerAñosUnicos(newData);
 const selectOrderInjuries = document.getElementById('order-injuries');
 
-
-// generador de tarjetas en el HTML
-/* const cardCreater = (arr, section) => {
-  let cardData = '';
-
-  arr.forEach((cant => {
-    cardData += '<div class="col-md-3">' + 
-    '<div class="card">' + '<div class="card-block">' +
-    `<h3 class="card-title">${cant['year']}</h3>` +
-      '<ul class="list-unstyled">' + 
-      `<li>Urban: ${cant['urbano']}</li>` +
-      `<li>Truck: ${cant['camion']}</li>` +
-      `<li>Air: ${cant['aereo']}</li>` + 
-      `<li>Railway: ${cant['ferreo']}</li>` +
-      `<li>Seaborne: ${cant['maritimo']}</li>` +
-      `<li>Vessels: ${cant['buques']}</li>` +
-      `<li>Yachts: ${cant['yates'] + 0}</li>` +
-      `<li>Others: ${cant['otros']}</li>` +
-    '</ul>' 
-    + '</div>' + '</div>' + '</div>';
-  })); */
-
 window.google.charts.load('current', {'packages': ['corechart']});
   
 const cardCreater = (arr, section) => {
@@ -75,7 +53,8 @@ const cardCreater = (arr, section) => {
     ]);
     
     let options = {
-      width: 400,
+      'responsive': true,
+      'width': 300
     };
     
     let chart = new window.google.visualization.PieChart(element);
