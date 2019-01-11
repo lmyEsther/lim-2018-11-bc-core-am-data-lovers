@@ -32,28 +32,6 @@ let arrAños = injuries.obtenerAñosUnicos(newData);
 // let dataTableFilter = document.getElementById('dataFilter');
 const selectOrderInjuries = document.getElementById('order-injuries');
 
-
-// ////////// generador de tarjetas en el HTML
-/* const cardCreater = (arr, section) => {
-  let cardData = '';
-
-  arr.forEach((cant => {
-    cardData += '<div class="col-md-3">' + 
-    '<div class="card">' + '<div class="card-block">' +
-    `<h3 class="card-title">${cant['year']}</h3>` +
-      '<ul class="list-unstyled">' + 
-      `<li>Urbano: ${cant['urbano']}</li>` +
-      `<li>Camión: ${cant['camion']}</li>` +
-      `<li>Aéreo: ${cant['aereo']}</li>` + 
-      `<li>Férreo: ${cant['ferreo']}</li>` +
-      `<li>Maritimo y Fluvial: ${cant['maritimo']}</li>` +
-      `<li>Buques: ${cant['buques']}</li>` +
-      `<li>Yates: ${cant['yates'] + 0}</li>` +
-      `<li>Otros: ${cant['otros']}</li>` +
-    '</ul>' 
-    + '</div>' + '</div>' + '</div>';
-  })); */
-
 window.google.charts.load('current', {'packages': ['corechart']});
   
 const cardCreater = (arr, section) => {
