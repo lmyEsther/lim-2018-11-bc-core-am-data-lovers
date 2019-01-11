@@ -18,9 +18,9 @@ const input3 = [{urbano: 3834009, yates: 2620, year: 1960},
   {urbano: 5652384, yates: 3559, year: 1993}, 
   {urbano: 5903800, yates: 3822, year: 1990}];
 
-const input4 = [{aereo: 2937, ferreo: 3982, maritimo: 1837, otros: 4872}, 
-  {aereo: 2836, ferreo: 1837, maritimo: 2827, otros: 3726},
-  {aereo: 1873, ferreo: 2837, maritimo: 278, otros: 473}];
+const input4 = [{aereo: 2937, ferrocarril: 3982, maritimo: 1837, otros: 4872}, 
+  {aereo: 2836, ferrocarril: 1837, maritimo: 2827, otros: 3726},
+  {aereo: 1873, ferrocarril: 2837, maritimo: 278, otros: 473}];
  
 const outputPromedioAereo = 2548; 
 const outputPromedioFerreo = 2885;
