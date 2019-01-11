@@ -27,14 +27,14 @@ Se pudieron realizar dos entrevistas, en base a estas se definieron las historia
     El usuario debe poder visualizar la cantidad de personas heridas clasificada por tipo de transporte, además ver esta data en los años mas recientes, en este caso, debe estar la data filtrada por los años mas recientes (2012-2015)
     
 
-2. Yo como usuario quiero: Ver CPH clasificado por medio de transporte en un rango de  años que yo pueda elegir previamente.
+2. Yo como usuario quiero: Ver CPH clasificado por medio de transporte en un rango de  años que yo pueda elegir previamente. Para: Analizar incidencias en cualquier rango de años que seleccione.
 
 
-3. Yo como usuario quiero: Tener la opción de ordenar los datos desde el año mas reciente y viceversa.
+3. Yo como usuario quiero: Tener la opción de ordenar los datos desde el año mas reciente y viceversa. Para: Analizar como ha sido la cantidad de traumatismo en accidentes mas recientes o mas antiguos.
 
 4. Yo como usuario quiero: Tener la opcion para ordenar los datos de menor incidencia a mayor incidencia por medio de transporte urbano, ya que este es el medio con mayor incidencia a lo largo de los años y poder tomar medidas de seguridad en el transito terrestre.
 
-5. Yo como usuario quiero: Visualizar la data en graficos para un mejor entendimiento.
+5. Yo como usuario quiero: Visualizar la data en graficos para un mejor entendimiento visual.
 
 # Diseño de la Interfaz de Usuario
 
