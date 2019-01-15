@@ -47,68 +47,31 @@ window.injuries = {
   sortData
 };
 
-const urbano = (arr) => {
-  let average = 0;
-
-  const sum = arr.reduce((acum, ele) => {
-    return acum + ele.urbano;
-  }, 0);
-
-  average = parseInt(sum / arr.length);
-
-  return average;
+const averageCalc = (arr, transp) => {
+  if (transp === 'urbano') {
+    return parseInt(arr.reduce((acum, ele) => {
+      return acum + ele.urbano;
+    }, 0) / arr.length);
+  } else if (transp === 'aereo') {
+    return parseInt(arr.reduce((acum, ele) => {
+      return acum + ele.aereo;
+    }, 0) / arr.length);
+  } else if (transp === 'ferrocarril') {
+    return parseInt(arr.reduce((acum, ele) => {
+      return acum + ele.ferrocarril;
+    }, 0) / arr.length);
+  } else if (transp === 'maritimo') {
+    return parseInt(arr.reduce((acum, ele) => {
+      return acum + ele.maritimo;
+    }, 0) / arr.length);
+  } else if (transp === 'otros') {
+    return parseInt(arr.reduce((acum, ele) => {
+      return acum + ele.otros;
+    }, 0) / arr.length);
+  }
 };
 
-const aereo = (arr) => {
-  let average = 0;
-
-  const sum = arr.reduce((acum, ele) => {
-    return acum + ele.aereo;
-  }, 0);
-
-  average = parseInt(sum / arr.length);
-  return average;
-};
-
-const ferreo = (arr) => {
-  let average = 0;
-
-  const sum = arr.reduce((acum, ele) => {
-    return acum + ele.ferrocarril;
-  }, 0);
-
-  average = parseInt(sum / arr.length);
-  return average;
-};
-
-const maritimo = (arr) => {
-  let average = 0;
-
-  const sum = arr.reduce((acum, ele) => {
-    return acum + ele.maritimo;
-  }, 0);
-
-  average = parseInt(sum / arr.length);
-
-  return average;
-};
-
-const otros = (arr) => {
-  let average = 0;
-
-  const sum = arr.reduce((acum, ele) => {
-    return acum + ele.otros;
-  }, 0);
-
-  average = parseInt(sum / arr.length);
-
-  return average;
-};
 
 window.promedio = {
-  urbano, 
-  aereo,
-  ferreo,
-  maritimo,
-  otros
+  averageCalc
 };

@@ -98,11 +98,11 @@ btnFilterByRange.addEventListener('click', (event) => {
       cardCreater(arrFilterByYear, sectionCard);
       averageText.innerHTML = `<ul class="list-unstyled">
       <li>The Average Number of People Injured by Transport</li>
-      <li>Urban: ${promedio.urbano(arrFilterByYear)}</li>
-      <li>Air: ${promedio.aereo(arrFilterByYear)}</li>
-      <li>Railway: ${promedio.ferreo(arrFilterByYear)}</li>
-      <li>Seaborne: ${promedio.maritimo(arrFilterByYear)}</li>
-      <li>Others: ${promedio.otros(arrFilterByYear)}</li>
+      <li>Urban: ${promedio.averageCalc(arrFilterByYear, 'urbano')}</li>
+      <li>Air: ${promedio.averageCalc(arrFilterByYear, 'aereo')}</li>
+      <li>Railway: ${promedio.averageCalc(arrFilterByYear, 'ferrocarril')}</li>
+      <li>Seaborne: ${promedio.averageCalc(arrFilterByYear, 'maritimo')}</li>
+      <li>Others: ${promedio.averageCalc(arrFilterByYear, 'otros')}</li>
       </ul>`;
     } else {
       cardCreater(arrFilterByYear, sectionCard);
@@ -139,3 +139,4 @@ selectOrderInjuries.addEventListener('change', () => {
 
 buttonData.addEventListener('click', clickButtonData); // muestra ventana principal
 buttonStart.addEventListener('click', clickButtonStart); // muestra ventana de datos
+
