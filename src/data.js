@@ -2,7 +2,7 @@ const recentYears = (arr) => {
   return arr.filter(ele => parseInt(ele.year) >= 2012 && parseInt(ele.year) <= 2015);
 };
 
-const obtenerAñosUnicos = (arr) => {
+const obtenerAniosUnicos = (arr) => {
   return arr.reduce((acum, ele) => {
     acum.push(parseInt(ele.year));
     return acum;
@@ -42,7 +42,7 @@ const sortData = (arr, sortBy, sortOrder) => {
 
 window.injuries = {
   recentYears,
-  obtenerAñosUnicos,
+  obtenerAniosUnicos,
   totalInjuredPersonsByYear,
   sortData
 };

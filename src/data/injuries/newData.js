@@ -1,5 +1,7 @@
+debugger;
 const classifiedTransp = (arr) => { 
     const copyData3 = [ ...arr];
+
     const newArr = [];
   
     copyData3.forEach(cant => {
