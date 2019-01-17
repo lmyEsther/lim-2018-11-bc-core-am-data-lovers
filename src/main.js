@@ -1,22 +1,20 @@
-let data;
-const buttonData = document.getElementById('datos');
-const buttonStart = document.getElementById('start');
-const screenStar = document.getElementById('screenStar');
-const allData = document.getElementById('allData');
-
-// fetch
-
+// obteniendo injuries.json
 fetch('https://raw.githubusercontent.com/lmyEsther/lim-2018-11-bc-core-am-data-lovers/DevOps/src/data/injuries/injuries.json')
   .then((response) => {
     if (response.status === 200) return response.json();
   })
   .then((respuestaJson) => {
-    data = respuestaJson;
+    let data = respuestaJson;
     injuriesFetch(data);    
   });
 
 function injuriesFetch(data) {
-  const newData = newDataClass.classifiedTransp(data);
+  const buttonData = document.getElementById('datos');
+  const buttonStart = document.getElementById('start');
+  const screenStar = document.getElementById('screenStar');
+  const allData = document.getElementById('allData');
+
+  const newData = newDataClass.classifiedTransp(data); console.log(newData);
   let sectionCard = document.querySelector('#card');
   let tableDataPrevia = document.querySelector('#previa');
   let dataRecent = injuries.recentYears(newData).reverse();
@@ -38,6 +36,7 @@ function injuriesFetch(data) {
     }));
     
     section.innerHTML = cardData;
+
     // pie charts
     const drawChart = (index, element) => {
       if (index >= arr.length) return;
@@ -105,7 +104,7 @@ function injuriesFetch(data) {
     } else {
       message.innerHTML = '';
       let arrFilterByYear = injuries.totalInjuredPersonsByYear(newData, yearStar, yearFinish);
-    
+      
       if (yearStar >= 1990) {
         cardCreater(arrFilterByYear, sectionCard);
         averageText.innerHTML = `<ul class="list-unstyled">
@@ -116,6 +115,19 @@ function injuriesFetch(data) {
       <li>Seaborne: ${promedio.averageCalc(arrFilterByYear, 'maritimo')}</li>
       <li>Others: ${promedio.averageCalc(arrFilterByYear, 'otros')}</li>
       </ul>`;
+
+        const dataEnArr = (arr) => {
+          let newArr2 = [];
+  
+          arr.forEach(ele => {
+            ele.year.toString();
+            newArr2.push(Object.values(ele).reverse());
+          });
+          return newArr2;
+        };
+        
+        // aqui invoco mi funcion
+        grafica(dataEnArr(arrFilterByYear));
       } else {
         cardCreater(arrFilterByYear, sectionCard);
         averageText.innerHTML = '';
@@ -123,6 +135,28 @@ function injuriesFetch(data) {
     }
   });
 
+  // funcion para graficas de barras
+  const grafica = (arr) => {console.log(arr);
+    window.google.charts.load('current', {'packages': ['bar']});
+    window.google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      let data = window.google.visualization.arrayToDataTable([
+        ['Year', 'Sales', 'Expenses', 'Profit', 'sdjf', 'askjh', 'jhfj', 'asjdh'], ...arr
+      ]);
+
+      let options = {
+        chart: {
+          title: 'Company Performance',
+          subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+        }
+      };
+
+      let chart = new window.google.charts.Bar(document.getElementById('columnchart_material'));
+
+      chart.draw(data, window.google.charts.Bar.convertOptions(options));
+    }
+  };
   // evento para ordenar data
   selectOrderInjuries.addEventListener('change', () => {
     const orderBy = selectOrderInjuries.value;

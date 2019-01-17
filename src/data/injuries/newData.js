@@ -1,4 +1,3 @@
-debugger;
 const classifiedTransp = (arr) => { 
     const copyData3 = [ ...arr];
 
@@ -44,7 +43,7 @@ const classifiedTransp = (arr) => {
           cant['Total_Injured_Persons_Other_Incidents'] +
           cant['Total_Injured_Persons_Pipeline']);
       
-      obj.year = parseInt(cant['Year']);
+      obj.year = cant['Year']
       
       newArr.push(obj);
     });
