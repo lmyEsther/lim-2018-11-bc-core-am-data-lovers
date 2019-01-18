@@ -14,7 +14,7 @@ function injuriesFetch(data) {
   const screenStar = document.getElementById('screenStar');
   const allData = document.getElementById('allData');
 
-  const newData = newDataClass.classifiedTransp(data); console.log(newData);
+  const newData = newDataClass.classifiedTransp(data);
   let sectionCard = document.querySelector('#card');
   let tableDataPrevia = document.querySelector('#previa');
   let dataRecent = injuries.recentYears(newData).reverse();
@@ -30,9 +30,9 @@ function injuriesFetch(data) {
     let cardData = '';
     
     arr.forEach((cant => {
-      cardData += `<div class="card">
-                <h3 class="card-title">${parseInt(cant.year)}</h3>
-                <div class="pie-chart"></div></div>`;
+      cardData += `<div class="card"><div class="col-sm-4">
+                <h4 class="card-title">${parseInt(cant.year)}</h4>
+                <div class="pie-chart"></div></div></div>`;
     }));
     
     section.innerHTML = cardData;
@@ -42,7 +42,7 @@ function injuriesFetch(data) {
       if (index >= arr.length) return;
       let scores = Object.entries(arr[index]); // creates an array like [key, value]
       scores = scores.filter((score) => {
-        return score[0] !== 'year';
+        return score[0] !== 'year' && score[0] !== 'promedio';
       });
     
       let data = window.google.visualization.arrayToDataTable([
@@ -65,24 +65,6 @@ function injuriesFetch(data) {
     });
   };
 
-  const clickButtonData = () => {
-    allData.classList.add('mostrar');
-    allData.classList.remove('ocultar');
-    screenStar.classList.add('ocultar');
-    screenStar.classList.remove('mostrar');
-  };
-
-  const clickButtonStart = () => {
-    allData.classList.add('ocultar');
-    allData.classList.remove('mostrar');
-    screenStar.classList.add('mostrar');
-    screenStar.classList.remove('ocultar');
-  };
-
-  cardCreater(dataRecent, tableDataPrevia);
-
-  cardCreater(newData, sectionCard);
-
   arrAnios.forEach((anio) => {
     selectYearStar.innerHTML += `<option value = ${anio}>${anio}</option>`;
     selectYearFinish.innerHTML += `<option value = ${anio}>${anio}</option>`;
@@ -91,74 +73,59 @@ function injuriesFetch(data) {
   // evento para filtrar la data
   btnFilterByRange.addEventListener('click', (event) => { 
     event.preventDefault();
-  
+    
     const yearStar = selectYearStar.value;
     const yearFinish = selectYearFinish.value;
     const message = document.getElementById('messageError');
-    const averageText = document.getElementById('average');
 
     if (yearStar > yearFinish) {
       message.innerHTML = '<i>Por favor, ingresa un rango válido</i>';
       sectionCard.innerHTML = '';
-      averageText.innerHTML = '';
     } else {
+      sectionCard.innerHTML = '';
       message.innerHTML = '';
       let arrFilterByYear = injuries.totalInjuredPersonsByYear(newData, yearStar, yearFinish);
       
-      if (yearStar >= 1990) {
-        cardCreater(arrFilterByYear, sectionCard);
-        averageText.innerHTML = `<ul class="list-unstyled">
-      <li>The Average Number of People Injured by Transport</li>
-      <li>Urban: ${promedio.averageCalc(arrFilterByYear, 'urbano')}</li>
-      <li>Air: ${promedio.averageCalc(arrFilterByYear, 'aereo')}</li>
-      <li>Railway: ${promedio.averageCalc(arrFilterByYear, 'ferrocarril')}</li>
-      <li>Seaborne: ${promedio.averageCalc(arrFilterByYear, 'maritimo')}</li>
-      <li>Others: ${promedio.averageCalc(arrFilterByYear, 'otros')}</li>
-      </ul>`;
+      const dataEnArr = (arr) => {
+        let newArr2 = [];
 
-        const dataEnArr = (arr) => {
-          let newArr2 = [];
-  
-          arr.forEach(ele => {
-            ele.year.toString();
-            newArr2.push(Object.values(ele).reverse());
-          });
-          return newArr2;
-        };
-        
-        // aqui invoco mi funcion
-        grafica(dataEnArr(arrFilterByYear));
-      } else {
-        cardCreater(arrFilterByYear, sectionCard);
-        averageText.innerHTML = '';
-      }
+        arr.forEach(ele => {
+          newArr2.push(Object.values(ele));
+        });
+        return newArr2;
+      };
+      graficaCombo(dataEnArr(arrFilterByYear));
+      // cardCreater(arrFilterByYear, sectionCard);
     }
   });
 
-  // funcion para graficas de barras
-  const grafica = (arr) => {console.log(arr);
+  // funcion para graficas de barras y promedio
+  const graficaCombo = (arr) => {
     window.google.charts.load('current', {'packages': ['bar']});
     window.google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
       let data = window.google.visualization.arrayToDataTable([
-        ['Year', 'Sales', 'Expenses', 'Profit', 'sdjf', 'askjh', 'jhfj', 'asjdh'], ...arr
+        ['Year', 'Urban', 'Motorcycles', 'Highway', 'Air', 'Railway', 'Seaborne', 'Others', 'Average'], ...arr
       ]);
 
       let options = {
-        chart: {
-          title: 'Company Performance',
-          subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-        }
+        title: 'Persons Injured by Transportation',
+        vAxis: {title: 'Number Persons Injuried'},
+        hAxis: {title: 'Year'},
+        seriesType: 'bars',
+        series: {7: {type: 'line'}},
+        responsive: true
       };
 
-      let chart = new window.google.charts.Bar(document.getElementById('columnchart_material'));
-
-      chart.draw(data, window.google.charts.Bar.convertOptions(options));
+      const chart = new window. google.visualization.ComboChart(document.getElementById('combochart_material'));
+      chart.draw(data, options);
     }
   };
   // evento para ordenar data
   selectOrderInjuries.addEventListener('change', () => {
+    document.getElementById('combochart_material').innerHTML = '';
+
     const orderBy = selectOrderInjuries.value;
 
     let orderCondition;
@@ -183,6 +150,23 @@ function injuriesFetch(data) {
     cardCreater(arrOrderData, sectionCard);
   });
 
+  const clickButtonData = () => {
+    allData.classList.add('mostrar');
+    allData.classList.remove('ocultar');
+    screenStar.classList.add('ocultar');
+    screenStar.classList.remove('mostrar');
+  };
+
+  const clickButtonStart = () => {
+    allData.classList.add('ocultar');
+    allData.classList.remove('mostrar');
+    screenStar.classList.add('mostrar');
+    screenStar.classList.remove('ocultar');
+  };
+
+  cardCreater(dataRecent, tableDataPrevia);
+
+  cardCreater(newData, sectionCard);
   buttonData.addEventListener('click', clickButtonData); // muestra ventana principal
   buttonStart.addEventListener('click', clickButtonStart); // muestra ventana de datos
 }

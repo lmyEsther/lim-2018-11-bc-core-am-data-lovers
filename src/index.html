@@ -2,26 +2,26 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Data Lovers</title>
+    <title>Vial Data Injuries</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css" integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>    
-      <header>
-        <div class="wrapper">
-            <img src="../assets/images/logo.png" alt="">
-        </div>
-      </header>
 
     <div class="navegacion">
+      <header>
       <nav>
        <ul>
-         <li><button id="start" type="button">INICIO</button></li>
-         <li><button id="datos" type="button">DATOS</button></li>
+         <li><img src="../assets/images/logo.png" alt="logo"><img src="../assets/images/vial.png" alt="vial"></li>
+         <li><button id="start" type="button"><i class="fas fa-home"></i></button></li>
+         <li><button id="datos" type="button"><i class="fas fa-database"></i></button></li>
        </ul>
      </nav>
+    </header>
     </div>
     
     <div class="contenedor">
@@ -94,7 +94,7 @@
 
             <div class="py-5">
               <div class="container">
-                  <h3>Vista Previa de Los Años Mas Recientes</h3>
+                  <h4>Vista Previa de Los Años Mas Recientes</h4>
                 <div class="row nowrap" id="previa">
                 </div>
               </div>
@@ -104,7 +104,7 @@
     <section id="allData" class="ocultar">
             <div class="filter">
              <div class="year">
-                <h3>Filtrar por Rango de Año</h3>
+                <h4>Filtrar por Rango de Año</h4>
               <select class="buttonAños"  id="anioInicio"></select>
               <select class="buttonAños"  id="anioFin"></select>
               <button class="buttonFilter" id="btn-select-range">Filtrar</button>
@@ -112,7 +112,7 @@
              </div>
             
              <div class="orden">
-              <h3>Ordenar por</h3>
+              <h4>Ordenar por</h4>
               <select class="type-select" id="order-injuries">
                 <option value="lessRecent">Año: Menos Recientes</option>
                 <option value="mostRecent">Año: Más Recientes</option>
@@ -122,22 +122,20 @@
              </div>
             </div>
 
-            <div class="">
-              <div id="average"></div>
-            </div>
-
           <div class="py-5">
               <div class="container">
-                <div class="row nowrap" id="card">
+                <div class="row" id="card">
                 </div>
               </div>
             </div>
 
-            <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+            <div class="mostrar" id="combochart_material" style="width: 1000px; height: 500px;"></div>
+
+            <div class="mostrar" id="average" style="width: 900px; height: 500px;"></div>
     </section> 
   </div> <!--contenedor-->
-   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <!-- <script src="https://www.gstatic.com/charts/loader.js"></script> -->
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="./data/injuries/injuries.js"></script>

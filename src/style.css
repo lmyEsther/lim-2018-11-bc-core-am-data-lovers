@@ -5,18 +5,6 @@
     height: auto;
 }
 
-header {
-    width: 100%;
-    overflow: hidden;
-}
-
-
-.wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    float: left;
-    overflow: hidden;
-}
 
 /** Navegacion **/
 .navegacion {
@@ -25,13 +13,17 @@ header {
 
 nav ul {
   list-style-type: none;
-  margin: 0;
   padding: 0;
   overflow: hidden;
+  min-width: 100px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 nav ul li {
   float: left;
+  position: relative;
+  margin: 0 20px 0 20px;
 }
 
 nav ul::after {
@@ -40,6 +32,12 @@ nav ul::after {
   clear: both;
 }
 
+nav ul li img {
+  max-width: 200px;
+  max-height: 50px;
+}
+
+
 nav ul li button {
   display: inline-block;
   width: 300px;
@@ -47,9 +45,9 @@ nav ul li button {
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  padding: 14px 16px;
+  padding: 1em;
   text-decoration: none;;
-  font-size: 14px;
+  font-size: 18px;
   background-color: #112e51;
   border: none;
   letter-spacing: 0.1em;
@@ -58,9 +56,10 @@ nav ul li button {
 
 nav ul li button:hover {
   background-color: #0071bc;
-  color: #212121;
+  color: #ffffff;
   text-decoration: none;
 }
+
  /**fin Navegacion **/
 
 #myCarousel {
