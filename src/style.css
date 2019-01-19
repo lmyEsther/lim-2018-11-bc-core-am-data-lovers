@@ -126,38 +126,49 @@ div table caption {
   margin: 20px;
 }
 
-.filter{
+.filter, #card{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.buttonAños{
+#combochart_material {
+  width: 100%; 
+  min-height: 450px;
+  margin: 0 !important;
+}
+
+.buttonAnios{
   background-color: #9bdaf1;
-    color: black;
-    border: 0;
-    border-radius: 30px;
-    width: 75px;
-    margin: 4px;
-    padding: 10px;
+  color: black;
+  border: 0;
+  border-radius: 30px;
+  width: 75px;
+  margin: 4px;
+  padding: 10px;
  }
 
- .buttonFilter{
+.buttonFilter{
   background-color: #8ba6ca;
-    color: black;
-    border: 0;
-    border-radius: 8px;
-    width: 75px;
-    margin: 4px;
-    padding: 10px;
+  color: black;
+  border: 0;
+  border-radius: 8px;
+  width: 75px;
+  margin: 4px;
+  padding: 10px;
  }
 
- .type-select{
+.type-select{
   background-color: #9bdaf1;
-    color: black;
-    border: 0;
-    border-radius: 30px;
-    width: 290px;
-    margin: 4px;
-    padding: 10px;
+  color: black;
+  border: 0;
+  border-radius: 30px;
+  width: 290px;
+  margin: 4px;
+  padding: 10px;
+ }
+
+ footer {
+  background-color: #112e51;
+  color: #ffffff
  }

@@ -17,8 +17,8 @@
       <nav>
        <ul>
          <li><img src="../assets/images/logo.png" alt="logo"><img src="../assets/images/vial.png" alt="vial"></li>
-         <li><button id="start" type="button"><i class="fas fa-home"></i></button></li>
-         <li><button id="datos" type="button"><i class="fas fa-database"></i></button></li>
+         <li><button id="start" type="button"><i class="fas fa-home"></i> Inicio</button></li>
+         <li><button id="datos" type="button"><i class="fas fa-database"></i> Dashboard</button></li>
        </ul>
      </nav>
     </header>
@@ -94,7 +94,7 @@
 
             <div class="py-5">
               <div class="container">
-                  <h4>Vista Previa de Los Años Mas Recientes</h4>
+                  <h4>Vista Previa</h4>
                 <div class="row nowrap" id="previa">
                 </div>
               </div>
@@ -105,8 +105,8 @@
             <div class="filter">
              <div class="year">
                 <h4>Filtrar por Rango de Año</h4>
-              <select class="buttonAños"  id="anioInicio"></select>
-              <select class="buttonAños"  id="anioFin"></select>
+              <select class="buttonAnios"  id="anioInicio"></select>
+              <select class="buttonAnios"  id="anioFin"></select>
               <button class="buttonFilter" id="btn-select-range">Filtrar</button>
               <p id="messageError"></p>
              </div>
@@ -126,16 +126,27 @@
               <div class="container">
                 <div class="row" id="card">
                 </div>
+                <div class="mostrar" id="combochart_material"></div>
               </div>
             </div>
 
-            <div class="mostrar" id="combochart_material" style="width: 1000px; height: 500px;"></div>
-
-            <div class="mostrar" id="average" style="width: 900px; height: 500px;"></div>
     </section> 
   </div> <!--contenedor-->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <p>VialDataU.S. - Injured Persons</p>
+        </div>
+        <div class="col-sm-6">
+          <p class="text-right">&#169; 2019 - Dev. Esther Cheremo</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
     <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://www.google.com/jsapi"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="./data/injuries/injuries.js"></script>

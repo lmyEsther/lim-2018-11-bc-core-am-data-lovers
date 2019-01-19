@@ -121,6 +121,9 @@ function injuriesFetch(data) {
       const chart = new window. google.visualization.ComboChart(document.getElementById('combochart_material'));
       chart.draw(data, options);
     }
+    $(window).resize(function() {
+      drawChart();
+    });
   };
   // evento para ordenar data
   selectOrderInjuries.addEventListener('change', () => {
